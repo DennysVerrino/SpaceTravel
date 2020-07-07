@@ -1,3 +1,184 @@
-body {
-	background-color: purple;
+@import 'normalize.css';
+
+/* global rules */
+
+html{
+    
+}
+
+body{
+    font-family: 'MuseoModerno', cursive;
+}
+
+/* img{
+    max-width: 100%;
+    height: auto;
+} */
+
+* {
+    box-sizing: border-box;
+}
+/*__________________________________________________________________________________ */
+
+/* variables */
+
+
+$mainWhite: #FFFFFF;
+$mainGrey: #b6b9c9;
+$secondGrey: #9398a5;
+$mainOrange: #fb9073;
+$mainTurquoise: #16dcd0;
+$darkTurquoise: #244a57;
+$darkBlue: #211740;
+
+/*__________________________________________________________________________________ */
+
+/* specials */
+
+.text-orange{
+	color: $mainOrange;
+}
+
+.text-turquoise{
+	color: $mainTurquoise;
+}
+
+.wrapper{
+	padding-left: 30px;
+	padding-right: 30px;
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.gradient{
+	background: linear-gradient(0deg, $darkTurquoise, $darkBlue);
+}
+
+/*__________________________________________________________________________________ */
+
+/* row and column layout */
+
+.row{
+	
+	display: flex;
+	justify-content: space-between;
+	
+	/* &::after{
+		content: "";
+		clear: both;
+		display: table;
+	} */
+	
+	
+	&__6{
+		
+		width: 49.2%;
+		/* float: left;
+		width: 48%;
+		margin-right: 5px; */
+	}	
+}
+
+/*__________________________________________________________________________________ */
+
+/* large-hero-section */
+
+
+.large-banner{
+	height: 400px;
+    position: relative;
+	overflow: hidden;
+	
+	@media (min-width: 990px){
+		height: 550px;
+	}
+	
+	@media (min-width: 1200px){
+		height: 700px;
+	}
+
+    &__image {
+		/*
+		height: 400px;
+		margin-left: 50%;
+		transform: translateX(-50%);
+		*/
+		width: 100%;
+		display: block;
+		position: absolute;
+		opacity: 0.15;
+		z-index: 1;
+		
+    }
+	
+	&__text-content{
+		position: relative;
+		color: $mainWhite;
+        text-align: center;
+		z-index: 3;
+		margin-top: 80px;
+    }
+	
+	&__title{
+		font-size: 1.8rem;
+		font-weight: 400;
+		margin: 0;
+	}
+	
+	&__subtitle{
+		color: $mainGrey;
+		font-size: 0.775rem;
+		font-weight: 400;
+		margin: 5px 0 20px 0;
+	}
+	
+	&__form{
+		width: 100%;
+	}
+	
+	&__form-input-container{
+		position: relative;
+	}
+	
+	&__form-input{
+		background-color: rgba(255, 255, 255, 0.075);
+		border: none;
+		border-radius: 4px;
+		height: 43px;
+		padding: 14px 12px 0px 12px;
+		width: 100%;
+		font-size: 0.8rem;
+		color: $secondGrey;
+		margin-bottom: 5px;
+	}
+	
+	&__form-input::placeholder {
+	  color: $secondGrey;
+	}
+	
+	&__form-label{
+		position: absolute;
+		top: 7px;
+		left: 12px;
+		font-size: 0.775rem;
+		font-weight: 500;
+	}	
+}
+
+/*__________________________________________________________________________________ */
+
+/* button */
+
+.btn{
+	background-color: rgba(22, 220, 208, 0.2);
+  	border: 2px solid $mainTurquoise;
+	border-radius: 4px;
+ 	color: $mainWhite;
+ 	padding: 8px 20px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 1.1rem;
+	margin-top: 15px;
 }

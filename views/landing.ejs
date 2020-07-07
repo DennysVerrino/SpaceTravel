@@ -1,11 +1,42 @@
 <%- include("partials/header") %>
 
-<h1>
-	Landing Page!
-</h1>
-<p>
-	Welcome to Spacetravel!
-</p>
-<a href="/vacationSpots">View all Destinations</a>
+
+<div class="large-banner gradient">
+	<picture>
+		<!--<source srcset="/images/space_landscape_smaller.jpg" media="(min-width: 1380px)">-->
+    	<source srcset="/images/space_landscape_medium.jpg" media="(min-width: 990px)">
+    	<source srcset="/images/space_landscape_small.jpg" media="(min-width: 600px)">
+		<img class="large-banner__image" src="/images/space_landscape_smaller.jpg" alt="space landscape">
+	</picture>
+	<div class="large-banner__text-content">
+		<div class="wrapper">
+			<h1 class="large-banner__title">Go beyond</h1>
+			<p class="large-banner__subtitle">and <span class="text-orange">discover</span> the <span class="text-turquoise">universe</span></p>
+			<form class="large-banner__form">
+				<div class="large-banner__form-input-container">
+					<label class="large-banner__form-label">planet</label>
+					<input type="text" class="large-banner__form-input" placeholder="Where do you want to go?">
+				</div>
+				<div class="row">
+					<div class="large-banner__form-input-container row__6">
+						<label class="large-banner__form-label">check-in</label>
+						<input type="text" class="large-banner__form-input" placeholder="Begin?">
+					</div>
+					<div class="large-banner__form-input-container row__6">
+						<label class="large-banner__form-label">check-out</label>
+						<input type="text" class="large-banner__form-input" placeholder="End?">
+					</div>
+				</div>
+				<div class="large-banner__form-input-container">
+					<label class="large-banner__form-label">guests</label>
+					<input type="number" class="large-banner__form-input" placeholder="How many?">
+				</div>
+				<button class="btn">Explore</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!--<a href="/vacationSpots">View all Destinations</a>-->
 
 <%- include("partials/footer") %>

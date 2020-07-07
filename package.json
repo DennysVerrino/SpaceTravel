@@ -9,7 +9,13 @@
   "author": "Dennys",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^9.8.4",
     "ejs": "^3.1.3",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "normalize.css": "^8.0.1",
+    "postcss-nested": "^4.2.1",
+    "postcss-simple-vars": "^5.0.2",
+    "precss": "^4.0.0"
   }
 }
