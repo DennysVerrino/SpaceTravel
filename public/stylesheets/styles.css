@@ -49,6 +49,11 @@ $darkBlue: #211740;
 	max-width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
+	
+	&--wider{
+		padding-left: 14px;
+		padding-right: 18px;
+	}
 }
 
 .gradient{
@@ -82,6 +87,127 @@ $darkBlue: #211740;
 
 /*__________________________________________________________________________________ */
 
+/* site header */
+
+.site-header{
+	padding-top: 10px;
+	position: absolute;
+	z-index: 4;
+	width: 100%;
+	
+	&__container{
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	&__logo{
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		height: 40px;
+		width: 140px;
+	
+		
+		img{
+			height: 40px;
+			width: 40px;
+			margin-right: 5px;
+		}
+		
+		&__text{
+			color: $mainWhite;
+			font-weight: 300;
+			font-size: 0.9rem;
+		}
+	}
+	
+	&__menu-mobile{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		
+		height: 40px;
+		width: 40px;
+		
+		i{
+			font-size: 1.0rem;
+			color: $mainOrange;
+		}
+		
+		&__icon{
+			
+			position: relative;
+			height: 14px;
+			width: 16px;
+			
+			&--top{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background-color: $mainWhite;
+			}
+			
+			&--middle{
+				position: absolute;
+				top: 6px;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background-color: $mainWhite;
+			}
+			
+			&--bottom{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background-color: $mainWhite;
+			}
+		}
+	}
+}
+
+/*__________________________________________________________________________________ */
+
+/* primary navigation */
+
+.primary-nav{
+	&--pull-right {
+		float: right;
+	}
+	
+	ul{
+		margin: 0;
+		padding: 0;
+		
+		 &::after{
+			content: "";
+			clear: both;
+			display: table;
+		} 
+	}
+	
+	li{
+		list-style: none;
+		float: left;
+		padding-right: 20px;
+	}
+	
+	a{
+		color: $mainWhite;
+		text-decoration: none;
+		font-size: 0.775rem;
+		font-weight: 100;
+		display: block;
+		padding: 12px 0;
+	}
+}
+
+/*__________________________________________________________________________________ */
+
 /* large-hero-section */
 
 
@@ -99,11 +225,7 @@ $darkBlue: #211740;
 	}
 
     &__image {
-		/*
-		height: 400px;
-		margin-left: 50%;
-		transform: translateX(-50%);
-		*/
+		
 		width: 100%;
 		display: block;
 		position: absolute;
@@ -175,7 +297,7 @@ $darkBlue: #211740;
   	border: 2px solid $mainTurquoise;
 	border-radius: 4px;
  	color: $mainWhite;
- 	padding: 8px 20px;
+ 	padding: 10px 20px;
   	text-align: center;
   	text-decoration: none;
   	display: inline-block;

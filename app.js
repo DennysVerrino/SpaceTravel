@@ -6,10 +6,11 @@ var app = express();
 // reads the css-file with nested css and variables
 // writes new css-file with legal css rules 
 // header needs to import the newly created file
-const autoprefixer = require('autoprefixer')
-const postcss = require('postcss')
-const precss = require('precss')
-const fs = require('fs')
+const autoprefixer = require('autoprefixer');
+const postcss = require('postcss');
+const precss = require('precss');
+const postcssHextoRGBA = require('postcss-hexrgba');
+const fs = require('fs');
 
 fs.readFile(__dirname + '/public/stylesheets/styles.css', (err, css) => {
   postcss([precss, autoprefixer])
