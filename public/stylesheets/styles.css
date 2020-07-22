@@ -427,7 +427,6 @@ $darkBlue: #211740;
 		align-items: center;
 		
 		height: 40px;
-		width: 40px;
 		
 		
 		@mixin atMedium{
@@ -438,6 +437,7 @@ $darkBlue: #211740;
 		i{
 			font-size: 1.0rem;
 			color: $mainOrange;
+			margin-right: 10px
 		}
 		
 		&__icon{

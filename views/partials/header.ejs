@@ -21,7 +21,9 @@
 				</a>
 				
 				<div class="site-header__menu-mobile">
-					<i class="far fa-user"></i>
+					<% if(!currentUser){ %>
+						<a href="/login"><i class="far fa-user"></i></a>
+					<% } %>
 					<div class="site-header__menu-mobile__icon">
 						<div class="site-header__menu-mobile__icon--top"></div>
 						<div class="site-header__menu-mobile__icon--middle"></div>
@@ -34,7 +36,13 @@
 							<li><a href="#">Special Offers</a></li>
 							<li><a href="#">About Us</a></li>
 							<li><a href="#">Why Choose Us</a></li>
-							<li><a  href="#"><span class="text--orange text--bold">Log In</span></a></li>
+							
+							<% if(!currentUser){ %>
+								<li><a href="/register">Sign Up</a></li>
+								<li><a href="/login"><span class="text--orange text--bold">Log In</span></a></li>
+							<% } else { %>
+								<li><a href="/logout"><span class="text--orange text--bold">Log Out</span></a></li>
+							<% } %>
 						</ul>
 					</nav>
 				</div>

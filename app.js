@@ -82,6 +82,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//-----------------------------------------------------------------------------------------------------------------------------------
+// Middleware to pass variables to every route like the currentUser
+app.use(function(req, res, next){
+	res.locals.currentUser = req.user;
+	next();
+});
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 
@@ -91,7 +97,7 @@ app.get("/", function(req, res){
 		if(err){
 			console.log(err);
 		} else{
-			res.render("landing.ejs", {bestSpots: vacationSpots});	
+			res.render("landing.ejs", {bestSpots: vacationSpots, currentUser: req.user});	
 		}
 	});
 });
@@ -99,13 +105,12 @@ app.get("/", function(req, res){
 app.get("/vacationSpots", function(req, res){
 	//Get all vacationSpots from DB
 	var searchTerm = req.query.planet.charAt(0).toUpperCase() + req.query.planet.slice(1).toLowerCase();
-	console.log(searchTerm);
 	
 	VacationSpot.find({name: searchTerm}, function(err, vacationSpots){
 		if(err){
 			console.log(err);
 		} else{
-			res.render("vacationSpots.ejs", {vacationSpots: vacationSpots});	
+			res.render("vacationSpots.ejs", {vacationSpots: vacationSpots, searchTerm: searchTerm});	
 		}
 	});
 });
@@ -129,6 +134,26 @@ app.post("/register", function(req, res){
 			res.redirect("/");
 		});
 	});
+});
+
+//show login form
+app.get("/login", function(req, res){
+	res.render("login");
+});
+
+//handle login logic
+app.post("/login", passport.authenticate("local",
+	{
+		successRedirect: "/",
+		failureRedirect: "/login"
+	}), function(req, res){
+	
+});
+
+//logout route
+app.get("/logout", function(req, res){
+	req.logout();
+	res.redirect("/");
 });
 
 

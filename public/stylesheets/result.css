@@ -785,8 +785,7 @@ a{
 		justify-content: space-between;
 		align-items: center;
 		
-		height: 40px;
-		width: 40px
+		height: 40px
 	}
 
 @media(min-width: 900px){
@@ -799,6 +798,7 @@ a{
 .site-header__menu-mobile i{
 			font-size: 1.0rem;
 			color: #fb9073;
+			margin-right: 10px
 		}
 
 .site-header__menu-mobile__icon{
