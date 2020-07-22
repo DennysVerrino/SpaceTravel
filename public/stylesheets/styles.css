@@ -117,12 +117,14 @@ $darkBlue: #211740;
 		background-image: linear-gradient(to top, rgba($darkTurquoise, 1.0), rgba($darkBlue, 0.8)), url(../images/space_landscape_medium.jpg);
 		background-size: cover;
 		background-position: center center;
+		background-attachment: fixed;
 	}
 	
 	&__with-bg2{
 		background-image: linear-gradient(to top, rgba($darkTurquoise, 1.0), rgba($darkBlue, 0.8)), url(../images/about_us_bg.jpg);
 		background-size: cover;
-		background-position: center left;
+		background-position: center center;
+		background-attachment: fixed;
 	}
 }
 
@@ -444,14 +446,14 @@ $darkBlue: #211740;
 			
 			position: relative;
 			height: 14px;
-			width: 16px;
+			width: 20px;
 			
 			&--top{
 				position: absolute;
 				top: 0;
 				left: 0;
 				width: 100%;
-				height: 2px;
+				height: 1px;
 				background-color: $mainWhite;
 			}
 			
@@ -460,7 +462,7 @@ $darkBlue: #211740;
 				top: 6px;
 				left: 0;
 				width: 100%;
-				height: 2px;
+				height: 1px;
 				background-color: $mainWhite;
 			}
 			
@@ -469,7 +471,7 @@ $darkBlue: #211740;
 				bottom: 0;
 				left: 0;
 				width: 100%;
-				height: 2px;
+				height: 1px;
 				background-color: $mainWhite;
 			}
 		}
@@ -491,6 +493,18 @@ $darkBlue: #211740;
 	
 	@mixin atLarge{
 		height: 600px;
+	}
+	
+	&--smaller{
+		height: 320px;
+		
+		@mixin atMedium{
+			height: 250px;
+		}
+	
+		@mixin atLarge{
+			height: 300px;
+		}
 	}
 
     &__image {

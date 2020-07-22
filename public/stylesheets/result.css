@@ -442,12 +442,14 @@ a{
 		background-image: linear-gradient(to top, rgba(36,74,87, 1.0), rgba(33,23,64, 0.8)), url(../images/space_landscape_medium.jpg);
 		background-size: cover;
 		background-position: center center;
+		background-attachment: fixed;
 	}
 
 .gradient__with-bg2{
 		background-image: linear-gradient(to top, rgba(36,74,87, 1.0), rgba(33,23,64, 0.8)), url(../images/about_us_bg.jpg);
 		background-size: cover;
-		background-position: center left;
+		background-position: center center;
+		background-attachment: fixed;
 	}
 
 .gradient2{
@@ -805,7 +807,7 @@ a{
 			
 			position: relative;
 			height: 14px;
-			width: 16px;
+			width: 20px;
 		}
 
 .site-header__menu-mobile__icon--top{
@@ -813,7 +815,7 @@ a{
 				top: 0;
 				left: 0;
 				width: 100%;
-				height: 2px;
+				height: 1px;
 				background-color: #FFFFFF;
 			}
 
@@ -822,7 +824,7 @@ a{
 				top: 6px;
 				left: 0;
 				width: 100%;
-				height: 2px;
+				height: 1px;
 				background-color: #FFFFFF;
 			}
 
@@ -831,7 +833,7 @@ a{
 				bottom: 0;
 				left: 0;
 				width: 100%;
-				height: 2px;
+				height: 1px;
 				background-color: #FFFFFF;
 			}
 
@@ -857,6 +859,24 @@ a{
 .large-banner{
 		height: 600px	
 }
+	}
+
+.large-banner--smaller{
+		height: 320px
+	}
+
+@media(min-width: 900px){
+	
+	.large-banner--smaller{
+			height: 250px
+	}
+	}
+
+@media(min-width: 1200px){
+	
+	.large-banner--smaller{
+			height: 300px
+	}
 	}
 
 .large-banner__image {
