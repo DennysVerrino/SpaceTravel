@@ -861,21 +861,39 @@ a{
 }
 	}
 
-.large-banner--smaller{
+.large-banner--small{
 		height: 320px
 	}
 
 @media(min-width: 900px){
 	
-	.large-banner--smaller{
+	.large-banner--small{
 			height: 250px
 	}
 	}
 
 @media(min-width: 1200px){
 	
-	.large-banner--smaller{
+	.large-banner--small{
 			height: 300px
+	}
+	}
+
+.large-banner--smaller{
+		height: 60px
+	}
+
+@media(min-width: 900px){
+	
+	.large-banner--smaller{
+			height: 100px
+	}
+	}
+
+@media(min-width: 1200px){
+	
+	.large-banner--smaller{
+			height: 160px
 	}
 	}
 
@@ -951,29 +969,33 @@ a{
 	}
 	}
 
-.large-banner__form{
-		width: 100%
-	}
+/*__________________________________________________________________________________ */
+
+/* form */
+
+.form{
+	width: 100%
+}
 
 @media(min-width: 900px){
-	
-	.large-banner__form{
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			margin-top: 100px;
-			padding: 0 80px
-	}
+
+.form{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		margin-top: 100px;
+		padding: 0 80px
+}
 	}
 
 @media(min-width: 1200px){
-	
-	.large-banner__form{
-			margin-top: 160px
-	}
+
+.form{
+		margin-top: 160px
+}
 	}
 
-.large-banner__form-inputs-box{
+.form__box{
 		display: flex;
 		justify-content: center;
 		flex-wrap: wrap
@@ -981,7 +1003,7 @@ a{
 
 @media(min-width: 900px){
 	
-	.large-banner__form-inputs-box{
+	.form__box{
 			background-color: rgba(255, 255, 255, 0.075);
 			border-radius: 4px;
 			margin-right: 15px;
@@ -989,29 +1011,29 @@ a{
 	}
 	}
 
-.large-banner__form-input-container{
+.form__input-container{
 		width: 100%;
 		position: relative;
 	}
 
-.large-banner__form-input-container--half{
+.form__input-container--half{
 			flex-grow: 1;
-			width: auto;
+			width: 49%;
 		}
 
 @media(min-width: 900px){
 	
-	.large-banner__form-input-container{
+	.form__input-container{
 			width: auto
 	}
 			
-			.large-banner__form-input-container:first-child{
+			.form__input-container:first-child{
 				flex-shrink: 0;
 				width: 40%;
 			}
 	}
 
-.large-banner__form-input{
+.form__input{
 		background-color: rgba(255, 255, 255, 0.075);
 		border: none;
 		border-radius: 4px;
@@ -1023,14 +1045,14 @@ a{
 		margin-bottom: 5px
 	}
 
-.large-banner__form-input:focus{
+.form__input:focus{
 			outline-offset: 0px;
 			outline: 2px solid #fb9073;
 		}
 
 @media(min-width: 900px){
 	
-	.large-banner__form-input{
+	.form__input{
 			height: 50px;
 			font-size: 0.8125rem;
 			margin-bottom: 0;
@@ -1041,30 +1063,30 @@ a{
 
 @media(min-width: 1200px){
 	
-	.large-banner__form-input{
+	.form__input{
 			height: 60px
 	}
 	}
 
-.large-banner__form-input-separator{
+.form__input-separator{
 		display: none;
 	}
 
-.large-banner__form-input-separator--mobile{
+.form__input-separator--mobile{
 			display: inline;
 			width: 5px
 		}
 
 @media(min-width: 900px){
 		
-		.large-banner__form-input-separator--mobile{
+		.form__input-separator--mobile{
 				width: 1px
 		}
 	}
 
 @media(min-width: 900px){
 	
-	.large-banner__form-input-separator{
+	.form__input-separator{
 			display: inline;
 			width: 1px;
 			height: 40px;
@@ -1075,40 +1097,40 @@ a{
 
 @media(min-width: 1200px){
 	
-	.large-banner__form-input-separator{
+	.form__input-separator{
 			height: 50px
 	}
 	}
 
-.large-banner__form-input::-moz-placeholder {
+.form__input::-moz-placeholder {
 	  color: #9398a5;
 	}
 
-.large-banner__form-input:-ms-input-placeholder {
+.form__input:-ms-input-placeholder {
 	  color: #9398a5;
 	}
 
-.large-banner__form-input::-ms-input-placeholder {
+.form__input::-ms-input-placeholder {
 	  color: #9398a5;
 	}
 
-&__form-input::-moz-placeholder {
+&__input::-moz-placeholder {
 	  color: #9398a5;
 	}
 
-&__form-input:-ms-input-placeholder {
+&__input:-ms-input-placeholder {
 	  color: #9398a5;
 	}
 
-&__form-input::-ms-input-placeholder {
+&__input::-ms-input-placeholder {
 	  color: #9398a5;
 	}
 
-.large-banner__form-input::placeholder {
+.form__input::placeholder {
 	  color: #9398a5;
 	}
 
-.large-banner__form-label{
+.form__input-label{
 		position: absolute;
 		top: 7px;
 		left: 12px;
@@ -1118,7 +1140,7 @@ a{
 
 @media(min-width: 900px){
 	
-	.large-banner__form-label{
+	.form__input-label{
 			font-size: 0.8125rem;
 			top: 13px
 	}
