@@ -1,44 +1,115 @@
 <%- include("partials/header") %>
 
 
-<div class="large-banner gradient">
-	<picture>
-		<!--<source srcset="/images/space_landscape_smaller.jpg" media="(min-width: 1380px)">-->
-    	<source srcset="/images/space_landscape_medium.jpg" media="(min-width: 990px)">
-    	<source srcset="/images/space_landscape_small.jpg" media="(min-width: 600px)">
-		<img class="large-banner__image" src="/images/space_landscape_smaller.jpg" alt="space landscape">
-	</picture>
-	<div class="large-banner__text-content">
-		<div class="wrapper">
-			<h1 class="large-banner__title">Go beyond</h1>
-			<p class="large-banner__subtitle">and <span class="text-orange">discover</span> the <span class="text-turquoise">universe</span></p>
-			<form class="large-banner__form">
-				<div class="large-banner__form-input-container">
-					<label class="large-banner__form-label">planet</label>
-					<input type="text" class="large-banner__form-input" placeholder="Where do you want to go?">
-				</div>
-				<div class="row">
-					<div class="large-banner__form-input-container row__6">
-						<label class="large-banner__form-label">check-in</label>
-						<input type="text" class="large-banner__form-input" placeholder="Begin?">
+
+
+<div class="page-section">
+	<div class="wrapper">
+		<h2 class="page-section__title"><i class="fas fa-circle"></i>Special Offers</h2>
+		<p class="page-section__subtitle">Best 2020 places where people love to stay!</p>
+		
+		<div class="grid">
+			<% bestSpots.forEach(function(bestSpot){ %>
+			<div class="grid__tile">
+				<img class="grid__tile__image" src="<%= bestSpot.thumbnail %>">
+				
+				<div class="grid__tile__container">
+					<div class="grid__tile__title-box">
+						<h3 class="grid__tile__title"><%= bestSpot.name %></h3>
+						<div class="grid__tile__rating">
+							<%= (Math.round(bestSpot.rating * 100) / 100).toFixed(1) %>
+							<% for(i = 0; i<bestSpot.rating; i++){ %>
+								<i class="fas fa-star"></i>
+							<% } %>	
+						</div>
 					</div>
-					<div class="large-banner__form-input-container row__6">
-						<label class="large-banner__form-label">check-out</label>
-						<input type="text" class="large-banner__form-input" placeholder="End?">
+					
+					<div class="grid__tile__description-box">
+						<div class="grid__tile__description">
+							<h4 class="grid__tile__description__subtitle"><%= bestSpot.station%></h4>
+							<p class="grid__tile__description__details"><%= bestSpot.type%> - <%= bestSpot.guests%> Guests - <%= bestSpot.bedrooms%> Bedrooms</p>
+						</div>
+						<div class="grid__tile__price-box">
+							<h3 class="grid__tile__price-box__price">$<%= bestSpot.price%></h3>
+							<p>per night</p>
+						</div>
 					</div>
 				</div>
-				<div class="large-banner__form-input-container">
-					<label class="large-banner__form-label">guests</label>
-					<input type="number" class="large-banner__form-input" placeholder="How many?">
-				</div>
-				<button class="btn">Explore</button>
-			</form>
+			</div>
+			<% }); %>
 		</div>
 	</div>
 </div>
 
+<div class="page-section page-section--dark page-section--fixed-height gradient__with-bg2">
+	<!--
+	<picture>
+		<img class="page-section__bg-image" src="/images/about_us_bg.jpg" alt="team shilouette">
+	</picture>
+	-->
+	<div class="wrapper wrapper--narrow">
+		<h2 class="page-section__title"><i class="fas fa-circle"></i>About Us</h2>
+		<p class="page-section__subtitle">SpaceTravel offers the best vacation rentals all over our solarsystem</p>
+		<p class="page-section__text">
+			Behind the scenes there is a diverse, innovative and versatile team who works together 
+			towards one common goal and that is to show people the beauty of the universe!
+		</p>
+		<button class="btn btn--small">Read More</button>
+	</div>
+</div>
+
 <div class="page-section">
-	
+	<div class="wrapper">
+		<h2 class="page-section__title"><i class="fas fa-circle"></i>Why Choose Us</h2>
+		<p class="page-section__subtitle">Our clients have been choosing SpaceTravel for a number of reasons</p>
+		
+		<div class="grid">
+			<div class="grid__tile grid__tile--more-mb">
+				<div class="feature-item">
+					<div class="feature-item__icon">
+						<i class="fas fa-star"></i>
+					</div>
+					<h3 class="feature-item__title">Touch Of Exclusivity</h3>
+					<p class="feature-item__description">
+						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.
+					</p>
+				</div>
+			</div>
+			<div class="grid__tile grid__tile--more-mb">
+				<div class="feature-item">
+					<div class="feature-item__icon">
+						<i class="fas fa-concierge-bell"></i>
+					</div>	
+					<h3 class="feature-item__title">Excellent Service</h3>
+					<p class="feature-item__description">
+						Lorem ipsum dolor sit amet, conse sadipscing elitr, sed diam nonumy.
+					</p>
+				</div>
+			</div>
+			<div class="grid__tile grid__tile--more-mb">
+				<div class="feature-item">
+					<div class="feature-item__icon">
+						<i class="far fa-handshake"></i>
+					</div>	
+					<h3 class="feature-item__title">Best Deals</h3>
+					<p class="feature-item__description">
+						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.
+					</p>
+				</div>
+			</div>
+			<div class="grid__tile grid__tile--more-mb">
+				<div class="feature-item">
+					<div class="feature-item__icon">
+						<i class="fas fa-dollar-sign"></i>
+					</div>	
+					<h3 class="feature-item__title">Price Transparancy</h3>
+					<p class="feature-item__description">
+						Lorem ipsum dolor sit amet, conse sadipscing elitr, sed diam nonumy.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!--<a href="/vacationSpots">View all Destinations</a>-->

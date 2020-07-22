@@ -1,12 +1,41 @@
 <%- include("partials/header") %>
 
-<h1>This the Vacation Spots page!</h1>
-
-<% vacationSpots.forEach(function(vacationSpot){ %>
-	<div>
-		<h4><%= vacationSpot.name %></h4>
-		<img src="<%= vacationSpot.image %>">
+<div class="page-section">
+	<div class="wrapper">
+		<h2 class="page-section__title"><i class="fas fa-circle"></i>Locations on </h2>
+		<p class="page-section__subtitle">...</p>
+		
+		<div class="grid">
+			<% vacationSpots.forEach(function(vacationSpot){ %>
+			<div class="grid__tile">
+				<img class="grid__tile__image" src="<%= vacationSpot.thumbnail %>">
+				
+				<div class="grid__tile__container">
+					<div class="grid__tile__title-box">
+						<h3 class="grid__tile__title"><%= vacationSpot.name %></h3>
+						<div class="grid__tile__rating">
+							<%= (Math.round(vacationSpot.rating * 100) / 100).toFixed(1) %>
+							<% for(i = 0; i<vacationSpot.rating; i++){ %>
+								<i class="fas fa-star"></i>
+							<% } %>	
+						</div>
+					</div>
+					
+					<div class="grid__tile__description-box">
+						<div class="grid__tile__description">
+							<h4 class="grid__tile__description__subtitle"><%= vacationSpot.station%></h4>
+							<p class="grid__tile__description__details"><%= vacationSpot.type%> - <%= vacationSpot.guests%> Guests - <%= vacationSpot.bedrooms%> Bedrooms</p>
+						</div>
+						<div class="grid__tile__price-box">
+							<h3 class="grid__tile__price-box__price">$<%= vacationSpot.price%></h3>
+							<p>per night</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<% }); %>
+		</div>
 	</div>
-<% }) %>
+</div>
 
 <%- include("partials/footer") %>

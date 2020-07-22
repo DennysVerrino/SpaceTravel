@@ -11,12 +11,14 @@
 	<body>
 		<header class="site-header">
 			<div class="site-header__container wrapper wrapper--wider">
-				<div class="site-header__logo">
-					<img src="/images/space_travel_logo.png">
-					<div class="site-header__logo__text">
-						<span class="text-turquoise">Space</span>Travel
+				<a href="/">
+					<div class="site-header__logo">
+						<img src="/images/space_travel_logo.png">
+						<div class="site-header__logo__text">
+							<span class="text--turquoise">Space</span>Travel
+						</div>
 					</div>
-				</div>
+				</a>
 				
 				<div class="site-header__menu-mobile">
 					<i class="far fa-user"></i>
@@ -26,17 +28,52 @@
 						<div class="site-header__menu-mobile__icon--bottom"></div>
 					</div>
 				</div>
-				<!--
-				<div class="site-header__menu-content">
+				<div class="site-header__menu-desktop">
 					<nav class="primary-nav primary-nav--pull-right">
 						<ul>
 							<li><a href="#">Special Offers</a></li>
 							<li><a href="#">About Us</a></li>
 							<li><a href="#">Why Choose Us</a></li>
+							<li><a  href="#"><span class="text--orange text--bold">Log In</span></a></li>
 						</ul>
 					</nav>
 				</div>
-				-->
 			</div>
 		</header>
+		
+		<div class="large-banner gradient__with-bg1">
+			<div class="large-banner__text-content">
+				<div class="wrapper">
+					<h1 class="large-banner__title">Go beyond</h1>
+					<p class="large-banner__subtitle">and <span class="text--orange">discover</span> the <span class="text--turquoise">universe</span></p>
+					<form class="large-banner__form" action="/vacationSpots" method="GET">
+						<div class="large-banner__form-inputs-box">
+							<div class="large-banner__form-input-container">
+								<label class="large-banner__form-label">planet</label>
+								<input type="text" name="planet" class="large-banner__form-input" placeholder="Where do you want to go?">
+							</div>
+							<div class="large-banner__form-input-separator">		
+							</div>
+							<div class="large-banner__form-input-container large-banner__form-input-container--half">
+								<label class="large-banner__form-label">check-in</label>
+								<input type="text" class="large-banner__form-input" placeholder="Begin?">
+							</div>
+							<div class="large-banner__form-input-separator large-banner__form-input-separator--mobile">		
+							</div>
+							<div class="large-banner__form-input-container large-banner__form-input-container--half">
+								<label class="large-banner__form-label">check-out</label>
+								<input type="text" class="large-banner__form-input" placeholder="End?">
+							</div>
+							<div class="large-banner__form-input-separator">		
+							</div>
+							<div class="large-banner__form-input-container">
+								<label class="large-banner__form-label">guests</label>
+								<input type="number" class="large-banner__form-input" placeholder="How many?">
+							</div>
+						</div>
+						<button class="btn btn--large">Explore</button>
+					</form>
+				</div>
+			</div>
+		</div>
 		
