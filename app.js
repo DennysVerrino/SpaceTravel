@@ -98,16 +98,27 @@ app.get("/", function(req, res){
 
 app.get("/vacationSpots", function(req, res){
 	//Get all vacationSpots from DB
-	var searchTerm = req.query.planet.charAt(0).toUpperCase() + req.query.planet.slice(1).toLowerCase();
-	console.log(searchTerm);
+	var searchPlanet = req.query.planet.charAt(0).toUpperCase() + req.query.planet.slice(1).toLowerCase();
+	var guestsNumber = req.query.guestsNumber;
 	
-	VacationSpot.find({name: searchTerm}, function(err, vacationSpots){
-		if(err){
-			console.log(err);
-		} else{
-			res.render("vacationSpots.ejs", {vacationSpots: vacationSpots});	
-		}
-	});
+	if(guestsNumber > 0 && guestsNumber != undefined){
+		VacationSpot.find({name: searchPlanet, guests: guestsNumber}, function(err, vacationSpots){
+			if(err){
+				console.log(err);
+			} else{
+				res.render("vacationSpots.ejs", {vacationSpots: vacationSpots});	
+			}
+		});   
+	} 
+	else {
+		VacationSpot.find({name: searchPlanet}, function(err, vacationSpots){
+			if(err){
+				console.log(err);
+			} else{
+				res.render("vacationSpots.ejs", {vacationSpots: vacationSpots});	
+			}
+		}); 
+	}
 });
 
 //-----------------------------------------------------------------------------------------------------------------------------------
