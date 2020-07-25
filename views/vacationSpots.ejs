@@ -1,5 +1,5 @@
 <%- include("partials/header") %>
-
+<%- include("partials/nav") %>
 <%- include("partials/smallBanner") %>
 
 <div class="page-section">
@@ -9,30 +9,23 @@
 		
 		<div class="grid">
 			<% vacationSpots.forEach(function(vacationSpot){ %>
-			<div class="grid__tile">
-				<img class="grid__tile__image" src="<%= vacationSpot.thumbnail %>">
-				
-				<div class="grid__tile__container">
-					<div class="grid__tile__title-box">
-						<h3 class="grid__tile__title"><%= vacationSpot.name %></h3>
-						<div class="grid__tile__rating">
+			<div class="grid__tile--col-3">
+				<div class="card card--borderR">
+					<div class="card__image-box">
+						<img src="<%= vacationSpot.thumbnail %>">
+					</div>
+					<div class="card__info-box">
+						<div class="card__info-box__price">$ <%= vacationSpot.price%> / person</div>
+						<h3 class="card__info-box__title"><%= vacationSpot.name %></h3>
+						<h4 class="card__info-box__subtitle"><%= vacationSpot.station%></h4>
+						<p class="card__info-box__description"><%= vacationSpot.type%> - <%= vacationSpot.guests%> Guests - <%= vacationSpot.bedrooms%> Bedrooms</p>
+						<div class="card__info-box__rating">
 							<%= (Math.round(vacationSpot.rating * 100) / 100).toFixed(1) %>
 							<% for(i = 0; i<vacationSpot.rating; i++){ %>
 								<i class="fas fa-star"></i>
 							<% } %>	
 						</div>
-					</div>
-					
-					<div class="grid__tile__description-box">
-						<div class="grid__tile__description">
-							<h4 class="grid__tile__description__subtitle"><%= vacationSpot.station%></h4>
-							<p class="grid__tile__description__details"><%= vacationSpot.type%> - <%= vacationSpot.guests%> Guests - <%= vacationSpot.bedrooms%> Bedrooms</p>
-						</div>
-						<div class="grid__tile__price-box">
-							<h3 class="grid__tile__price-box__price">$<%= vacationSpot.price%></h3>
-							<p>per night</p>
-						</div>
-					</div>
+					</div>	
 				</div>
 			</div>
 			<% }); %>

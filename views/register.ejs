@@ -1,13 +1,36 @@
 <%- include("partials/header") %>
 
-<%- include("partials/smallerBanner") %>
-
-<h1>Sign up!</h1>
-
-<form action="/register" method="POST">
-	<input type="text" name="username" placeholder="username">
-	<input type="password" name="password" placeholder="password">
-	<button>Sign Up!</button>
-</form>
-
-<%- include("partials/footer") %>
+<div class="background gradient">
+	<a href="/">
+		<div class="login-form__logo">
+			<img src="/images/space_travel_logo.png">
+			<div class="login-form__logo__text">
+				<span class="text--turquoise">Space</span>Travel
+			</div>
+		</div>
+	</a>
+	<form class="login-form" action="/register" method="POST">
+		<div class="login-form__headline">
+			<div class="login-form__iconbox">
+				<i class="fas fa-circle"></i>
+			</div>
+			<h2 class="login-form__title">Register</h2>
+		</div>
+		
+		<div class="login-form__input-container">
+			<div class="login-form__input-iconbox">
+				<i class="far fa-user"></i>
+			</div>
+			<input class="login-form__input" type="text" name="username" placeholder="Username">
+		</div>
+		<div class="login-form__input-container">
+			<div class="login-form__input-iconbox">
+				<i class="fas fa-lock"></i>
+			</div>
+			<input class="login-form__input" type="password" name="password" placeholder="Password">
+		</div>
+		<button class="btn btn--full-width btn--not-transparent">Sign Up</button>
+		<p class="login-form__signup-line">You have an account? <a href="/login"><strong>Login</strong></a></p>
+	</form>
+	<p class="login-form__privacy-policy-line">By logging in you agree to our <a>Privacy Policy</a></p>
+</div>

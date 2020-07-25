@@ -30,7 +30,7 @@ a{
 $mainWhite: #FFFFFF;
 $mainGrey: #b6b9c9;
 $mainGrey: #c7ced6;
-$secondGrey: #9398a5;
+$lightGrey: #F7FAFD;
 $mainOrange: #fb9073;
 $mainTurquoise: #16dcd0;
 $darkTurquoise: #244a57;
@@ -111,7 +111,7 @@ $darkBlue: #211740;
 }
 
 .gradient{
-	background-image: linear-gradient(to top, rgba($darkTurquoise, 1.0), rgba($darkBlue, 0.8));
+	background-image: linear-gradient(to top, rgba($darkTurquoise, 1.0), rgba($darkBlue, 1.0));
 	
 	&__with-bg1{
 		background-image: linear-gradient(to top, rgba($darkTurquoise, 1.0), rgba($darkBlue, 0.8)), url(../images/space_landscape_medium.jpg);
@@ -149,6 +149,133 @@ $darkBlue: #211740;
 }
 
 .grid{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
+	
+	&__tile{
+		
+		&--col-3{
+			flex: 0 0 100%;
+			max-width: 500px;
+			margin-bottom: 30px;
+			
+			@mixin atSmall{
+				padding-right: 15px;
+				padding-left: 15px;
+			}
+			
+			@mixin atMedium{
+				flex: 0 0 50%;
+				max-width: 50%;
+			}
+			
+			@mixin atLarge{
+				flex: 0 0 33.333333%;
+				max-width: 33.333333%;
+			}
+		}
+	}
+}
+
+.card{
+	width: 100%;
+	overflow: hidden;
+	
+	&--borderR{
+		border-radius: 5px;	
+	}
+	
+	&__image-box{
+		height: 180px;
+		width: 100%;
+		overflow: hidden;
+		
+		@mixin atSmall{
+			height: 250px;
+		}
+		
+		img{
+			height: 100%;
+			width: 100%;
+			display: block;
+			object-fit: cover;
+		}
+	}
+	
+	&__info-box{
+		position: relative;
+		padding: 32px 18px 18px 18px;
+		background-color: $mainWhite;
+		
+		@mixin atSmall{
+			padding: 20px 24px 24px 24px;
+		}
+		
+		&__price{
+			background-color: $mainTurquoise;
+			position: absolute;
+			top: -20px;
+			left: 50%;
+			transform: translateX(-50%);
+			margin: 0 auto;
+			color: $mainWhite;
+			text-align: center;
+			border-radius: 20px;
+			font-size: 0.85rem;
+			padding: 10px;
+			
+			@mixin atSmall{
+				top: -25px;
+				font-size: 1rem;
+				padding: 15px;
+			}
+		}
+		
+		&__title{
+			font-size: 1.1rem;
+			font-weight: 600;
+			margin: 0;
+			
+			@mixin atSmall{
+				font-size: 1.4rem;
+			}
+		}
+		
+		&__subtitle{
+			font-weight: 500;
+			font-size: 1rem;
+			margin: 3px 0;
+			
+			@mixin atSmall{
+				font-size: 0.9rem;
+			}
+		}
+		
+		&__description{
+			font-weight: 400;
+			font-size: 0.8rem;
+			
+			@mixin atSmall{
+				font-size: 0.7rem;
+			}
+		}
+		
+		&__rating{
+			color: $mainTurquoise;
+			font-size: 0.8rem;
+			font-weight: 600;
+			
+			@mixin atSmall{
+				font-size: 0.7rem;
+			}
+		}
+	}
+}
+
+/* .grid{
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -275,7 +402,7 @@ $darkBlue: #211740;
 			}
 		}
 	}
-}
+} */
 
 /*__________________________________________________________________________________ */
 
@@ -319,7 +446,7 @@ $darkBlue: #211740;
 /* button */
 
 .btn{
-	background-color: rgba(22, 220, 208, 0.2);
+	background-color: rgba($mainTurquoise, 0.2);
   	border: 2px solid $mainTurquoise;
 	border-radius: 4px;
  	color: $mainWhite;
@@ -328,9 +455,15 @@ $darkBlue: #211740;
   	text-decoration: none;
   	display: inline-block;
   	font-size: 1.1rem;
+	cursor: pointer;
 	margin-top: 15px;
 	
-	cursor: pointer;
+	
+	&--no-margin{
+		@mixin atMedium{
+			margin-top: 0;
+		}	
+	}
 	
 	&--small{
 		font-size: 0.8rem;
@@ -352,9 +485,13 @@ $darkBlue: #211740;
 		}
 	}
 	
-	@mixin atMedium{
-		margin-top: 0;
-	}	
+	&--full-width{
+		width: 100%;
+	}
+	
+	&--not-transparent{
+		background-color: rgba($mainTurquoise, 1.0);
+	}
 }
 
 /*__________________________________________________________________________________ */
@@ -362,17 +499,18 @@ $darkBlue: #211740;
 /* site header */
 
 .site-header{
-	padding-top: 10px;
-	position: absolute;
+	padding: 10px 0;
+	position: fixed;
 	z-index: 4;
 	width: 100%;
+	background-color: $darkBlue;
 	
 	@mixin atMedium{
-		padding-top: 30px;
+		padding: 20px 0
 	}
 	
 	@mixin atLarge{
-		padding-top: 60px;
+		padding: 30px 0
 	}
 	
 	&__container{
@@ -536,11 +674,11 @@ $darkBlue: #211740;
 		margin-top: 80px;
 		
 		@mixin atMedium{
-			margin-top: 130px;
+			margin-top: 200px;
 		}
 		
 		@mixin atLarge{
-			margin-top: 190px;
+			margin-top: 250px;
 		}
     }
 	
@@ -585,12 +723,12 @@ $darkBlue: #211740;
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
-		margin-top: 100px;
+		margin-top: 50px;
 		padding: 0 80px;
 	}
 
 	@mixin atLarge{
-		margin-top: 160px;
+		margin-top: 90px;
 	}
 	
 	&__box{
@@ -633,7 +771,7 @@ $darkBlue: #211740;
 		padding: 14px 12px 0px 12px;
 		width: 100%;
 		font-size: 0.8rem;
-		color: $secondGrey;
+		color: $lightGrey;
 		margin-bottom: 5px;
 		
 		&:focus{
@@ -681,7 +819,7 @@ $darkBlue: #211740;
 
 	
 	&__input::placeholder {
-	  color: $secondGrey;
+	  color: $lightGrey;
 	}
 	
 	&__input-label{
@@ -700,11 +838,139 @@ $darkBlue: #211740;
 
 /*__________________________________________________________________________________ */
 
+/* login form */
+.background{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;	
+	justify-content: center;
+	padding: 0 20px;
+}
+
+.login-form{
+	background-color: $mainWhite;
+	border-radius: 3px;
+	padding: 30px;
+	width: 100%;
+	max-width: 260px;
+	
+	&__logo{
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		margin-bottom: 20px;
+	
+		
+		img{
+			height: 60px;
+			width: 60px;
+			margin-right: 5px;
+		}
+		
+		&__text{
+			color: $mainWhite;
+			font-weight: 300;
+			font-size: 1.4rem;
+		}
+	}
+	
+	&__headline{
+		display: flex;
+		margin: 5px 0 40px 0;
+		justify-content: center;
+	}
+	
+	&__iconbox{
+		display: flex;
+		align-items: center;
+		padding-top: 4px;
+		
+		i{
+			margin-right: 10px;
+			color: $mainOrange;
+			font-size: 0.9rem;
+		}
+	}
+	
+	&__title{
+		font-size: 1.7rem;
+		text-align: center;
+		font-weight: 600;
+		color: $darkBlue;
+		padding-right: 15px;
+		margin: 0;
+	}
+	
+	&__input-container{
+		display: flex;
+		background-color: #e8ebed;
+		width: 100%;
+		height: 43px;
+		border-radius: 4px;
+		margin-top: 7px;
+	}
+	
+	&__input-iconbox{
+		display: flex;
+		align-items: center;
+		margin-left: 15px;
+		
+		i{
+			color: $mainOrange;
+			font-size: 1.1rem;
+		}
+	}
+	
+	&__input{
+		width: 100%;
+		margin-bottom: 0;
+		border: none;
+		background-color: transparent;
+		padding: 10px 15px;
+		font-size: 0.85rem;
+	}
+	
+	&__signup-line{
+		color: $darkBlue;
+		text-align: center;
+		font-size: 0.6rem;
+		margin: 20px 0 0 0;
+		
+		a{
+			
+			
+			&:visited{
+				color: $darkBlue;
+			}
+		}
+	}
+	
+	&__privacy-policy-line{
+		color: $mainWhite;
+		text-align: center;
+		font-size: 0.6rem;
+		font-weight: 200;
+		margin-top: 30px;
+		
+		a{
+			text-decoration: underline;
+		}
+	}
+}
+
+/*__________________________________________________________________________________ */
+
 /* page-section */
 
 .page-section{
 	padding: 50px 0;
 	color: $darkBlue;
+	
+	&--lightBG{
+		background-color: $lightGrey;
+	}
 	
 	@mixin atMedium{
 		padding: 80px 0 120px 0;
@@ -831,7 +1097,7 @@ $darkBlue: #211740;
 	
 	&__section{
 		color: $mainWhite;
-		border-bottom: 1px solid $secondGrey;
+		border-bottom: 1px solid $lightGrey;
 		padding: 15px 0;
 		
 		@mixin atMedium{

@@ -1,0 +1,39 @@
+<header class="site-header">
+	<div class="site-header__container wrapper wrapper--wider">
+		<a href="/">
+			<div class="site-header__logo">
+				<img src="/images/space_travel_logo.png">
+				<div class="site-header__logo__text">
+					<span class="text--turquoise">Space</span>Travel
+				</div>
+			</div>
+		</a>
+
+		<div class="site-header__menu-mobile">
+			<% if(!currentUser){ %>
+				<a href="/login"><i class="far fa-user"></i></a>
+			<% } %>
+			<div class="site-header__menu-mobile__icon">
+				<div class="site-header__menu-mobile__icon--top"></div>
+				<div class="site-header__menu-mobile__icon--middle"></div>
+				<div class="site-header__menu-mobile__icon--bottom"></div>
+			</div>
+		</div>
+		<div class="site-header__menu-desktop">
+			<nav class="primary-nav primary-nav--pull-right">
+				<ul>
+					<li><a href="#">Special Offers</a></li>
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Why Choose Us</a></li>
+
+					<% if(!currentUser){ %>
+						<li><a href="/register">Sign Up</a></li>
+						<li><a href="/login"><span class="text--orange text--bold">Log In</span></a></li>
+					<% } else { %>
+						<li><a href="/logout"><span class="text--orange text--bold">Log Out</span></a></li>
+					<% } %>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>

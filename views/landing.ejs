@@ -1,39 +1,32 @@
 <%- include("partials/header") %>
-
+<%- include("partials/nav") %>
 <%- include("partials/largeBanner") %>
 
 
-<div class="page-section">
+<div class="page-section page-section--lightBG">
 	<div class="wrapper">
 		<h2 class="page-section__title"><i class="fas fa-circle"></i>Special Offers</h2>
 		<p class="page-section__subtitle">Best 2020 places where people love to stay!</p>
 		
 		<div class="grid">
 			<% bestSpots.forEach(function(bestSpot){ %>
-			<div class="grid__tile">
-				<img class="grid__tile__image" src="<%= bestSpot.thumbnail %>">
-				
-				<div class="grid__tile__container">
-					<div class="grid__tile__title-box">
-						<h3 class="grid__tile__title"><%= bestSpot.name %></h3>
-						<div class="grid__tile__rating">
+			<div class="grid__tile--col-3">
+				<div class="card card--borderR">
+					<div class="card__image-box">
+						<img src="<%= bestSpot.thumbnail %>">
+					</div>
+					<div class="card__info-box">
+						<div class="card__info-box__price">$ <%= bestSpot.price%> / person</div>
+						<h3 class="card__info-box__title"><%= bestSpot.name %></h3>
+						<h4 class="card__info-box__subtitle"><%= bestSpot.station%></h4>
+						<p class="card__info-box__description"><%= bestSpot.type%> - <%= bestSpot.guests%> Guests - <%= bestSpot.bedrooms%> Bedrooms</p>
+						<div class="card__info-box__rating">
 							<%= (Math.round(bestSpot.rating * 100) / 100).toFixed(1) %>
 							<% for(i = 0; i<bestSpot.rating; i++){ %>
 								<i class="fas fa-star"></i>
 							<% } %>	
 						</div>
-					</div>
-					
-					<div class="grid__tile__description-box">
-						<div class="grid__tile__description">
-							<h4 class="grid__tile__description__subtitle"><%= bestSpot.station%></h4>
-							<p class="grid__tile__description__details"><%= bestSpot.type%> - <%= bestSpot.guests%> Guests - <%= bestSpot.bedrooms%> Bedrooms</p>
-						</div>
-						<div class="grid__tile__price-box">
-							<h3 class="grid__tile__price-box__price">$<%= bestSpot.price%></h3>
-							<p>per night</p>
-						</div>
-					</div>
+					</div>	
 				</div>
 			</div>
 			<% }); %>
@@ -64,7 +57,7 @@
 		<p class="page-section__subtitle">Our clients have been choosing SpaceTravel for a number of reasons</p>
 		
 		<div class="grid">
-			<div class="grid__tile grid__tile--more-mb">
+			<div class="grid__tile--col-3 grid__tile--more-mb">
 				<div class="feature-item">
 					<div class="feature-item__icon">
 						<i class="fas fa-star"></i>
@@ -75,7 +68,7 @@
 					</p>
 				</div>
 			</div>
-			<div class="grid__tile grid__tile--more-mb">
+			<div class="grid__tile--col-3 grid__tile--more-mb">
 				<div class="feature-item">
 					<div class="feature-item__icon">
 						<i class="fas fa-concierge-bell"></i>
@@ -86,7 +79,7 @@
 					</p>
 				</div>
 			</div>
-			<div class="grid__tile grid__tile--more-mb">
+			<!-- <div class="grid__tile--col-3 grid__tile--more-mb">
 				<div class="feature-item">
 					<div class="feature-item__icon">
 						<i class="far fa-handshake"></i>
@@ -96,8 +89,8 @@
 						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.
 					</p>
 				</div>
-			</div>
-			<div class="grid__tile grid__tile--more-mb">
+			</div> -->
+			<div class="grid__tile--col-3 grid__tile--more-mb">
 				<div class="feature-item">
 					<div class="feature-item__icon">
 						<i class="fas fa-dollar-sign"></i>
