@@ -16,9 +16,12 @@
 						<img src="<%= bestSpot.thumbnail %>">
 					</div>
 					<div class="card__info-box">
-						<div class="card__info-box__price">$ <%= bestSpot.price%> / person</div>
-						<h3 class="card__info-box__title"><%= bestSpot.name %></h3>
-						<h4 class="card__info-box__subtitle"><%= bestSpot.station%></h4>
+						<div class="card__info-box__details">details</div>
+						<div class="card__info-box__title-box">
+							<h3 class="card__info-box__title"><%= bestSpot.station %></h3>
+							<h3 class="card__info-box__price">$ <%= bestSpot.price %><span> / night</span></h3>
+						</div>
+						<h4 class="card__info-box__subtitle"><%= bestSpot.name%></h4>
 						<p class="card__info-box__description"><%= bestSpot.type%> - <%= bestSpot.guests%> Guests - <%= bestSpot.bedrooms%> Bedrooms</p>
 						<div class="card__info-box__rating">
 							<%= (Math.round(bestSpot.rating * 100) / 100).toFixed(1) %>

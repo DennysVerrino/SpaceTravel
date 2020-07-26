@@ -28,7 +28,6 @@ a{
 
 
 $mainWhite: #FFFFFF;
-$mainGrey: #b6b9c9;
 $mainGrey: #c7ced6;
 $lightGrey: #F7FAFD;
 $mainOrange: #fb9073;
@@ -207,14 +206,14 @@ $darkBlue: #211740;
 	
 	&__info-box{
 		position: relative;
-		padding: 32px 18px 18px 18px;
+		padding: 20px 18px 18px 18px;
 		background-color: $mainWhite;
 		
 		@mixin atSmall{
-			padding: 20px 24px 24px 24px;
+			padding: 35px 24px 24px 24px;
 		}
 		
-		&__price{
+		&__details{
 			background-color: $mainTurquoise;
 			position: absolute;
 			top: -20px;
@@ -234,6 +233,12 @@ $darkBlue: #211740;
 			}
 		}
 		
+		&__title-box{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		
 		&__title{
 			font-size: 1.1rem;
 			font-weight: 600;
@@ -241,6 +246,25 @@ $darkBlue: #211740;
 			
 			@mixin atSmall{
 				font-size: 1.4rem;
+			}
+		}
+		
+		&__price{
+			font-size: 0.8rem;
+			font-weight: 600;
+			margin: 0;
+			
+			@mixin atSmall{
+				font-size: 1.1rem;
+			}
+			
+			span{
+				font-size: 0.6rem;
+				font-weight: 300;
+				
+				@mixin atSmall{
+					font-size: 0.9rem;
+				}
 			}
 		}
 		
@@ -503,7 +527,7 @@ $darkBlue: #211740;
 	position: fixed;
 	z-index: 4;
 	width: 100%;
-	background-color: $darkBlue;
+	/* background-color: $darkBlue; */
 	
 	@mixin atMedium{
 		padding: 20px 0
@@ -680,6 +704,16 @@ $darkBlue: #211740;
 		@mixin atLarge{
 			margin-top: 250px;
 		}
+		
+		&--lessMargin{
+			@mixin atMedium{
+				margin-top: 130px;
+			}
+			
+			@mixin atLarge{
+				margin-top: 160px;
+			}
+		}
     }
 	
 	&__title{
@@ -771,7 +805,7 @@ $darkBlue: #211740;
 		padding: 14px 12px 0px 12px;
 		width: 100%;
 		font-size: 0.8rem;
-		color: $lightGrey;
+		color: $mainGrey;
 		margin-bottom: 5px;
 		
 		&:focus{
@@ -819,7 +853,7 @@ $darkBlue: #211740;
 
 	
 	&__input::placeholder {
-	  color: $lightGrey;
+	  color: $mainGrey;
 	}
 	
 	&__input-label{

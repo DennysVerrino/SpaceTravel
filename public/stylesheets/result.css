@@ -541,18 +541,18 @@ a{
 
 .card__info-box{
 		position: relative;
-		padding: 32px 18px 18px 18px;
+		padding: 20px 18px 18px 18px;
 		background-color: #FFFFFF
 	}
 
 @media(min-width: 530px){
 	
 	.card__info-box{
-			padding: 20px 24px 24px 24px
+			padding: 35px 24px 24px 24px
 	}
 	}
 
-.card__info-box__price{
+.card__info-box__details{
 			background-color: #16dcd0;
 			position: absolute;
 			top: -20px;
@@ -568,12 +568,18 @@ a{
 
 @media(min-width: 530px){
 		
-		.card__info-box__price{
+		.card__info-box__details{
 				top: -25px;
 				font-size: 1rem;
 				padding: 15px
 		}
 	}
+
+.card__info-box__title-box{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
 
 .card__info-box__title{
 			font-size: 1.1rem;
@@ -586,6 +592,31 @@ a{
 		.card__info-box__title{
 				font-size: 1.4rem
 		}
+	}
+
+.card__info-box__price{
+			font-size: 0.8rem;
+			font-weight: 600;
+			margin: 0
+		}
+
+@media(min-width: 530px){
+		
+		.card__info-box__price{
+				font-size: 1.1rem
+		}
+	}
+
+.card__info-box__price span{
+				font-size: 0.6rem;
+				font-weight: 300
+			}
+
+@media(min-width: 530px){
+			
+			.card__info-box__price span{
+					font-size: 0.9rem
+			}
 	}
 
 .card__info-box__subtitle{
@@ -856,8 +887,8 @@ a{
 	padding: 10px 0;
 	position: fixed;
 	z-index: 4;
-	width: 100%;
-	background-color: #211740
+	width: 100%
+	/* background-color: $darkBlue; */
 }
 
 @media(min-width: 900px){
@@ -1081,6 +1112,20 @@ a{
     }
 	}
 
+@media(min-width: 900px){
+		
+		.large-banner__text-content--lessMargin{
+				margin-top: 130px
+		}
+	}
+
+@media(min-width: 1200px){
+		
+		.large-banner__text-content--lessMargin{
+				margin-top: 160px
+		}
+	}
+
 .large-banner__title{
 		font-size: 1.8rem;
 		font-weight: 400;
@@ -1194,7 +1239,7 @@ a{
 		padding: 14px 12px 0px 12px;
 		width: 100%;
 		font-size: 0.8rem;
-		color: #F7FAFD;
+		color: #c7ced6;
 		margin-bottom: 5px
 	}
 
@@ -1256,31 +1301,31 @@ a{
 	}
 
 .form__input::-moz-placeholder {
-	  color: #F7FAFD;
+	  color: #c7ced6;
 	}
 
 .form__input:-ms-input-placeholder {
-	  color: #F7FAFD;
+	  color: #c7ced6;
 	}
 
 .form__input::-ms-input-placeholder {
-	  color: #F7FAFD;
+	  color: #c7ced6;
 	}
 
 &__input::-moz-placeholder {
-	  color: #F7FAFD;
+	  color: #c7ced6;
 	}
 
 &__input:-ms-input-placeholder {
-	  color: #F7FAFD;
+	  color: #c7ced6;
 	}
 
 &__input::-ms-input-placeholder {
-	  color: #F7FAFD;
+	  color: #c7ced6;
 	}
 
 .form__input::placeholder {
-	  color: #F7FAFD;
+	  color: #c7ced6;
 	}
 
 .form__input-label{

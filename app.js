@@ -102,6 +102,8 @@ app.get("/", function(req, res){
 	});
 });
 
+//INDEX ROUTE - shows all vacationSpots that match the search
+
 app.get("/vacationSpots", function(req, res){
 	//Get all vacationSpots from DB
 	var searchTerm = req.query.planet.charAt(0).toUpperCase() + req.query.planet.slice(1).toLowerCase();
@@ -113,6 +115,14 @@ app.get("/vacationSpots", function(req, res){
 			res.render("vacationSpots.ejs", {vacationSpots: vacationSpots, searchTerm: searchTerm});	
 		}
 	});
+});
+
+
+//SHOW ROUTE - shows one specific vacationSpot
+app.get("/vacationSpots/:id", function(req, res){
+	//find the vacationSpot with provided ID
+	//render show template of that vacationSpot 
+	res.render("show.ejs");
 });
 
 //-----------------------------------------------------------------------------------------------------------------------------------
