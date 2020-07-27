@@ -121,8 +121,14 @@ app.get("/vacationSpots", function(req, res){
 //SHOW ROUTE - shows one specific vacationSpot
 app.get("/vacationSpots/:id", function(req, res){
 	//find the vacationSpot with provided ID
-	//render show template of that vacationSpot 
-	res.render("show.ejs");
+	VacationSpot.findById(req.params.id, function(err, foundVacationSpot){
+		if(err){
+			console.log(err);
+		} else{
+			//render show template of that vacationSpot 
+			res.render("show.ejs", {vacationSpot: foundVacationSpot});	
+		}
+	});
 });
 
 //-----------------------------------------------------------------------------------------------------------------------------------

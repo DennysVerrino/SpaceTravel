@@ -1,0 +1,110 @@
+<%- include("partials/header") %>
+<%- include("partials/nav") %>
+<%- include("partials/smallBanner") %>
+
+<div class="show-section">
+	<div class="wrapper wrapper--maxWidth-1000">
+		<div class="show-section__image-box">
+			<img src="<%= vacationSpot.thumbnail %>">
+		</div>
+		<div class="grid">
+			<div class="grid__tile--col-2">
+				<div class="show-section__info-box">
+					<h3 class="show-section__title"><%= vacationSpot.station %></h3>
+					<h4 class="show-section__subtitle"><%= vacationSpot.name %></h4>
+					<p class="show-section__text"><%= vacationSpot.type%> - <%= vacationSpot.guests%> Guests - <%= vacationSpot.bedrooms%> Bedrooms</p>
+					<div class="show-section__rating">
+						<%= (Math.round(vacationSpot.rating * 100) / 100).toFixed(1) %>
+						<% for(i = 0; i<vacationSpot.rating; i++){ %>
+							<i class="fas fa-star"></i>
+						<% } %>	
+					</div>
+					<h3 class="show-section__price">$ <%= vacationSpot.price %><span> / night</span></h3>
+				</div>	
+			</div>	
+			<div class="grid__tile--col-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="wrapper wrapper--maxWidth-1000">
+	<div class="show-section__separator"></div>
+</div>
+
+<div class="show-section">
+	<div class="wrapper wrapper--maxWidth-1000">
+		<div class="grid">
+			<div class="grid__tile--col-2">
+				<div class="show-section__details">
+					<h4 class="show-section__item-title">All Details</h4>
+					<div>
+						<li><i class="far fa-clock"></i>Check-in: 6:00PM - 9:00PM</li>
+						<li><i class="far fa-clock"></i>Check-out: 11:00AM</li>
+						<li><i class="fas fa-medkit"></i>First aid kit: Yes</li>
+						<li><i class="fas fa-wifi"></i>Wifi: Yes</li>
+						<li><i class="fas fa-bath"></i>Bathtub: Yes</li>
+						<li><i class="fas fa-fan"></i>Air conditioning: Yes</li>
+						<li><i class="fas fa-paw"></i>Pets: allowed</li>
+					</div>
+				</div>
+			</div>	
+			<div class="grid__tile--col-2">
+				<div class="show-section__description-box">
+					<h4 class="show-section__item-title">About This Station</h4>
+					<p class="show-section__description">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+						labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra 
+						maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+						sed do eiusmod tempor magna aliqua. Quis ipsum suspendisse ultrices 
+					</p>
+					
+					<button class="btn btn--small btn--full-transparent">Read More</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="wrapper wrapper--maxWidth-1000">
+	<div class="show-section__separator"></div>
+</div>
+
+<div class="show-section">
+	<div class="wrapper wrapper--maxWidth-1000">
+		<h4 class="show-section__item-title show-section__item-title--with-ml">Reviews</h4>
+		<div class="grid">
+			
+			<% for(i = 0; i < 3; i++){ %>
+				<div class="grid__tile--col-3">
+					<div class="review-item">
+						<div class="review-item__profil-pic-box">
+							<i class="fas fa-user-circle"></i>
+						</div>
+						<h5 class="review-item__title">Very Good</h5>
+						<p class="review-item__text">
+							amet, consectetur adipiscing elit, sed do eiusmod tempor 
+							magna aliqua. Quis ipsum suspendisse ultrices.
+						</p>
+						<div class="review-item__author-box">
+							<span>Dennys Verrino</span>
+							<span>26 July 2020</span>
+						</div>
+						<div class="review-item__rating">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+					</div>
+				</div>
+			<% } %>
+		</div>
+	</div>
+</div>
+
+
+
+<%- include("partials/footer") %>

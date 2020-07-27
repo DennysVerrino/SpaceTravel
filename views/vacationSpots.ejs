@@ -15,10 +15,10 @@
 						<img src="<%= vacationSpot.thumbnail %>">
 					</div>
 					<div class="card__info-box">
-						<div class="card__info-box__details">details</div>
+						<a href="/vacationSpots/<%= vacationSpot._id %>"><div class="card__info-box__details">Details</div></a>
 						<div class="card__info-box__title-box">
 							<h3 class="card__info-box__title"><%= vacationSpot.station %></h3>
-							<h3 class="card__info-box__price">$ <%= vacationSpot.price %><span> / night</span></h3>
+							<h3 class="card__info-box__price">$<%= vacationSpot.price %><span> / night</span></h3>
 						</div>
 						<h4 class="card__info-box__subtitle"><%= vacationSpot.name%></h4>
 						<p class="card__info-box__description"><%= vacationSpot.type%> - <%= vacationSpot.guests%> Guests - <%= vacationSpot.bedrooms%> Bedrooms</p>
