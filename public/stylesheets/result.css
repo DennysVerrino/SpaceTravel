@@ -487,15 +487,16 @@ a{
 }
 	}
 
-.grid__tile--col-3{
+.grid__tile--3-col-atL{
 			flex: 0 0 100%;
 			max-width: 500px;
+			width: 100%;
 			margin-bottom: 30px
 		}
 
 @media(min-width: 530px){
 		
-		.grid__tile--col-3{
+		.grid__tile--3-col-atL{
 				padding-right: 15px;
 				padding-left: 15px
 		}
@@ -503,7 +504,7 @@ a{
 
 @media(min-width: 900px){
 		
-		.grid__tile--col-3{
+		.grid__tile--3-col-atL{
 				flex: 0 0 50%;
 				max-width: 50%
 		}
@@ -511,20 +512,22 @@ a{
 
 @media(min-width: 1200px){
 		
-		.grid__tile--col-3{
+		.grid__tile--3-col-atL{
 				flex: 0 0 33.333333%;
 				max-width: 33.333333%
 		}
 	}
 
-.grid__tile--col-2{
+.grid__tile--3-col-atM{
 			flex: 0 0 100%;
-			max-width: 100%
+			max-width: 500px;
+			width: 100%;
+			margin-bottom: 30px
 		}
 
 @media(min-width: 530px){
 		
-		.grid__tile--col-2{
+		.grid__tile--3-col-atM{
 				padding-right: 15px;
 				padding-left: 15px
 		}
@@ -532,7 +535,30 @@ a{
 
 @media(min-width: 900px){
 		
-		.grid__tile--col-2{
+		.grid__tile--3-col-atM{
+				flex: 0 0 33.333333%;
+				max-width: 33.333333%
+		}
+	}
+
+.grid__tile--2-col-atL{
+			flex: 0 0 100%;
+			max-width: 100%
+		}
+
+@media(min-width: 530px){
+		
+		
+		.grid__tile--2-col-atL{
+				padding-right: 15px;
+				padding-left: 15px
+		}
+	}
+
+@media(min-width: 900px){
+		
+		
+		.grid__tile--2-col-atL{
 				flex: 0 0 50%;
 				max-width: 50%
 		}
@@ -708,7 +734,8 @@ a{
 @media(min-width: 530px){
 	
 	.show-section__image-box{
-			height: 350px
+			height: 350px;
+			padding: 0 15px
 	}
 	}
 
@@ -716,7 +743,6 @@ a{
 	
 	.show-section__image-box{
 			height: 500px;
-			padding: 0 15px;
 			margin: 35px 0
 	}
 	}
@@ -769,7 +795,7 @@ a{
 	}
 	}
 
-@media(min-width: 900px){
+@media(min-width: 530px){
 		
 		.show-section__item-title--with-ml{
 				margin-left: 15px
@@ -778,7 +804,14 @@ a{
 
 .show-section__text{
 		font-size: 0.9rem;
-		margin: 12px 0
+		margin: 12px 0;
+	}
+
+@media(min-width: 530px){
+		
+		.show-section__text--with-p{
+				padding:0 15px
+		}
 	}
 
 @media(min-width: 900px){
@@ -842,6 +875,8 @@ a{
 	}
 
 .show-section__details li i{
+				height:21px;
+				width:21px;
 				color: #fb9073;
 				margin-right: 12px;
 				font-size: 1.2rem
@@ -885,6 +920,9 @@ a{
 		padding: 0 15px;
 	}
 
+/*__________________________________________________________________________________ */
+/* review item */
+
 .review-item{
 	
 	padding: 24px;
@@ -909,7 +947,9 @@ a{
 		position: absolute;
 		top: -36px;
 		left: 50%;
-		transform: translateX(-50%)
+		transform: translateX(-50%);
+		background-color: #FFFFFF;
+		border-radius: 36px
 	}
 
 @media(min-width: 900px){
@@ -918,7 +958,8 @@ a{
 			height: 96px;
 			width: 96px;
 			position: absolute;
-			top: -48px
+			top: -48px;
+			border-radius: 48px
 	}
 	}
 
@@ -950,7 +991,8 @@ a{
 .review-item__text{
 		font-size: 0.9rem;
 		font-weight: 300;
-		line-height: 1.3125rem
+		line-height: 1.3125rem;
+		word-wrap: break-word
 	}
 
 @media(min-width: 900px){
@@ -991,6 +1033,66 @@ a{
 	}
 	}
 
+/*__________________________________________________________________________________ */
+/* review item */
+
+.review-form--with-mt{
+		margin-top: 35px;
+	}
+
+.review-form--with-mb{
+		margin-bottom: 35px;
+	}
+
+@media(min-width: 530px){
+
+.review-form{
+		padding: 0 15px
+}
+	}
+
+.review-form__inputs-container{
+		width: 100%;
+		border: 1px solid #c7ced6;
+		border-radius: 5px;
+		position: relative;	
+	}
+
+.review-form__input-container{
+		width: 100%;
+		position: relative;
+	}
+
+.review-form__input-label{
+		position: absolute;
+		top: 15px;
+		left: 24px;
+		font-size: 0.9rem;
+		font-weight: 500;
+	}
+
+.review-form__input{
+		border: none;
+		border-bottom: 1px solid #c7ced6;
+		padding: 24px;
+		padding-top: 35px;
+		width: 100%;
+		background-color: transparent;
+		font-weight: 300;
+	}
+
+.review-form__textarea{
+		border: none;
+		border-bottom: 1px solid #c7ced6;
+		padding: 24px;
+		padding-top: 35px;
+		width: 100%;
+		background-color: transparent;
+		font-weight: 300;
+		resize: none;
+	}
+
+/*__________________________________________________________________________________ */
 /* primary navigation */
 
 .primary-nav ul{
@@ -1021,64 +1123,64 @@ a{
 /*__________________________________________________________________________________ */
 
 /* button */
-
 .btn{
-	background-color: rgba(22,220,208, 0.2);
-  	border: 2px solid #16dcd0;
-	border-radius: 4px;
- 	color: #FFFFFF;
- 	padding: 10px 20px;
+	padding: 10px 20px;
   	text-align: center;
   	text-decoration: none;
   	display: inline-block;
   	font-size: 1.1rem;
 	cursor: pointer;
+	border-radius: 4px;
 	margin-top: 15px;
+	border: none
 }
-
 @media(min-width: 900px){
-	
-	
-	.btn--no-margin{
-			margin-top: 0	
+.btn{
+		padding: 10px 20px;
+		font-size: 1.2rem
+}
 	}
+@media(min-width: 1200px){
+.btn{
+		padding: 10px 30px;
+		font-size: 1.5rem
+}
 	}
-
+.btn--turquoise{
+		background-color: #16dcd0;
+		color: #FFFFFF;
+		
+		/*
+		&--semi-transparent{
+			background-color: rgba($mainTurquoise, 0.2);
+  			border: 2px solid $mainTurquoise;
+			color: $mainWhite;
+		} 
+		*/
+	}
+.btn--turquoise--transparent{
+			background-color: rgba(22,220,208, 0);
+  			border: 2px solid #16dcd0;
+			color: #16dcd0;
+			font-weight: 400;
+		}
+.btn--orange{
+		background-color: #fb9073;
+		color: #FFFFFF;
+	}
 .btn--small{
 		font-size: 0.8rem;
 		padding: 5px 7px;
 		font-weight: 300;
-		margin-top: 15px;
 	}
-
-@media(min-width: 900px){
-	
-	.btn--large{
-			padding: 10px 20px;
-			font-size: 1.2rem
-	}
-	}
-
-@media(min-width: 1200px){
-	
-	.btn--large{
-			padding: 10px 30px;
-			font-size: 1.5rem
-	}
-	}
-
 .btn--full-width{
 		width: 100%;
 	}
-
-.btn--not-transparent{
-		background-color: rgba(22,220,208, 1.0);
+@media(min-width: 900px){
+	
+	.btn--no-marginT-atL{
+			margin-top: 0
 	}
-
-.btn--full-transparent{
-		background-color: rgba(22,220,208, 0);
-		color: #16dcd0;
-		font-weight: 500;
 	}
 
 /*__________________________________________________________________________________ */
@@ -1087,7 +1189,8 @@ a{
 
 .site-header{
 	padding: 10px 0;
-	position: fixed;
+	position: absolute;
+	/*position: fixed;*/
 	z-index: 4;
 	width: 100%
 	/* background-color: $darkBlue; */
@@ -1393,6 +1496,10 @@ a{
 .form{
 		margin-top: 90px
 }
+	}
+
+.form--inline{
+		display: inline;
 	}
 
 .form__box{
@@ -1769,6 +1876,7 @@ a{
 	color: #211740;
 	margin-bottom: 50px;
 	width: 60%;
+	max-width: 300px;
 	margin-left: auto;
 	margin-right: auto
 }

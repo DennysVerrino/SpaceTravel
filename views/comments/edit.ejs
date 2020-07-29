@@ -1,0 +1,30 @@
+<%- include("../partials/header") %>
+<%- include("../partials/nav") %>
+<%- include("../partials/smallBanner") %>
+
+<div class="show-section">
+	<div class="wrapper wrapper--maxWidth-1000">
+		<h4 class="show-section__item-title show-section__item-title--with-ml">Edit your Review</h4>
+
+		<form class="review-form review-form--with-mt review-form--with-mb" action="/vacationSpots/<%= vacationSpot_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+			<div class="review-form__inputs-container">
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">title</label>
+					<input type="text" name="comment[title]" class="review-form__input" value="<%= comment.title %>">
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">text</label>
+					<textarea rows="5" maxlength="100" name="comment[text]" class="review-form__textarea"><%= comment.text %></textarea>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">rating</label>
+					<input type="number" name="comment[rating]" class="review-form__input" value="<%= comment.rating %>">
+				</div>
+			</div>
+
+			<button class="btn btn--turquoise btn--full-width">Submit</button>
+		</form>
+	</div>
+</div>
+
+<%- include("../partials/footer") %>

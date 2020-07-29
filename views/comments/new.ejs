@@ -1,0 +1,29 @@
+<h1>add new comment to <%= vacationSpot.station %></h1>
+
+<form class="form" action="/vacationSpots/<%= vacationSpot._id %>/comments" method="POST">
+	<div class="form__box">
+		<div class="form__input-container">
+			<label class="form__input-label">title</label>
+			<input type="text" name="comment[title]" class="form__input" placeholder="...">
+		</div>
+		<div class="form__input-separator">		
+		</div>
+		<div class="form__input-container">
+			<label class="form__input-label">text</label>
+			<input type="text" name="comment[text]" class="form__input" placeholder="...">
+		</div>
+		<div class="form__input-separator">		
+		</div>
+		<div class="form__input-container">
+			<label class="form__input-label">author</label>
+			<input type="text" name="comment[author]" class="form__input" placeholder="...">
+		</div>
+		<div class="form__input-separator">		
+		</div>
+		<div class="form__input-container">
+			<label class="form__input-label">rating</label>
+			<input type="number" name="comment[rating]" class="form__input" placeholder="...">
+		</div>
+	</div>
+	<button class="btn btn--large btn--no-margin">submit</button>
+</form>

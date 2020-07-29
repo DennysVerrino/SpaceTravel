@@ -1,0 +1,156 @@
+<%- include("../partials/header") %>
+<%- include("../partials/nav") %>
+<%- include("../partials/smallBanner") %>
+
+<div class="show-section">
+	<div class="wrapper wrapper--maxWidth-1000">
+		<div class="show-section__image-box">
+			<img src="<%= vacationSpot.thumbnail %>">
+		</div>
+		<div class="grid">
+			<div class="grid__tile--2-col-atL">
+				<div class="show-section__info-box">
+					<h3 class="show-section__title"><%= vacationSpot.station %></h3>
+					<h4 class="show-section__subtitle"><%= vacationSpot.name %></h4>
+					<p class="show-section__text"><%= vacationSpot.type%> - <%= vacationSpot.guests%> Guests - <%= vacationSpot.bedrooms%> Bedrooms</p>
+					<div class="show-section__rating">
+						
+						<% var ratingAverage = 0 %>
+						<% var counter = 0 %>
+						<% vacationSpot.comments.forEach(function(comment){ %>
+						<%		ratingAverage += comment.rating; %>
+						<%		counter++; %>
+						<% }) %>
+						<% ratingAverage = ratingAverage/counter; %>
+						
+						<%= (Math.round(ratingAverage * 100) / 100).toFixed(1) %>
+						<% for(i = 0; i<ratingAverage; i++){ %>
+							<i class="fas fa-star"></i>
+						<% } %>	
+					</div>
+					<h3 class="show-section__price">$ <%= vacationSpot.price %><span> / night</span></h3>
+				</div>	
+			</div>	
+			<div class="grid__tile--2-col-atL">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="wrapper wrapper--maxWidth-1000">
+	<div class="show-section__separator"></div>
+</div>
+
+<div class="show-section">
+	<div class="wrapper wrapper--maxWidth-1000">
+		<div class="grid">
+			<div class="grid__tile--2-col-atL">
+				<div class="show-section__details">
+					<h4 class="show-section__item-title">All Details</h4>
+					<div>
+						<li><i class="far fa-clock"></i>Check-in: <strong><%= vacationSpot.details.checkin %></strong></li>
+						<li><i class="far fa-clock"></i>Check-out: <strong><%= vacationSpot.details.checkout %></strong></li>
+						
+						<li><i class="fas fa-medkit"></i>First Aid Kit: <strong><%= vacationSpot.details.firstAid %></strong></li>
+						<li><i class="fas fa-wifi"></i>Wifi: <strong><%= vacationSpot.details.wifi %></strong></li>
+						<li><i class="fas fa-bath"></i>Bathtub: <strong><%= vacationSpot.details.bathtub %></strong></li>
+						<li><i class="fas fa-fan"></i>Air conditioning: <strong><%= vacationSpot.details.airCon %></strong></li>
+						<li><i class="fas fa-paw"></i>Pets: <strong><%= vacationSpot.details.pets %></strong></li>
+					</div>
+				</div>
+			</div>	
+			<div class="grid__tile--2-col-atL">
+				<div class="show-section__description-box">
+					<h4 class="show-section__item-title">About This Station</h4>
+					<p class="show-section__description">
+						<%= vacationSpot.description %>
+					</p>
+					
+					<button class="btn btn--small btn--turquoise btn--turquoise--transparent">Read More</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="wrapper wrapper--maxWidth-1000">
+	<div class="show-section__separator"></div>
+</div>
+
+<div class="show-section">
+	<div class="wrapper wrapper--maxWidth-1000">
+		<h4 class="show-section__item-title show-section__item-title--with-ml">Reviews</h4>
+		
+		<% if(vacationSpot.comments.length == 0){ %>
+			<p class="show-section__text show-section__text--with-p">
+				No comments yet. Be the first! 
+			</p>
+		<% } else { %>
+			<div class="grid">
+				<% vacationSpot.comments.forEach(function(comment){ %>
+					<div class="grid__tile--3-col-atL">
+						<div class="review-item">
+							<div class="review-item__profil-pic-box">
+								<i class="fas fa-user-circle"></i>
+							</div>
+							<h5 class="review-item__title"><%= comment.title %></h5>
+							<p class="review-item__text">
+								<%= comment.text %>
+							</p>
+							<div class="review-item__author-box">
+								<span><%= comment.author.username %></span>
+								<span><%= comment.created.toDateString().slice(-11) %></span>
+							</div>
+							<div class="review-item__rating">
+								<%= (Math.round(comment.rating * 100) / 100).toFixed(1) %>
+								<% for(i = 0; i<comment.rating; i++){ %>
+									<i class="fas fa-star"></i>
+								<% } %>	
+							</div>
+							<% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+								<a class="btn btn--turquoise btn--small" href="/vacationSpots/<%= vacationSpot._id %>/comments/<%= comment._id %>/edit">Edit</a>
+								<form class="form--inline" action="/vacationSpots/<%= vacationSpot._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+									<button class="btn btn--small btn--orange">Delete</button>
+								</form>
+							<% } %>
+						</div>
+					</div>
+				<% }) %>
+			</div>
+		<% } %>
+	</div>
+</div>
+
+<div class="wrapper wrapper--maxWidth-1000">
+	<div class="show-section__separator"></div>
+</div>
+
+<div class="show-section">
+	<div class="wrapper wrapper--maxWidth-1000">
+		<h4 class="show-section__item-title show-section__item-title--with-ml">Leave a Review</h4>
+
+		<form class="review-form review-form--with-mt review-form--with-mb" action="/vacationSpots/<%= vacationSpot._id %>/comments" method="POST">
+			<div class="review-form__inputs-container">
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">title</label>
+					<input type="text" name="comment[title]" class="review-form__input" placeholder="...">
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">text</label>
+					<textarea rows="5" maxlength="100" name="comment[text]" class="review-form__textarea" placeholder="..."></textarea>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">rating</label>
+					<input type="number" name="comment[rating]" class="review-form__input" placeholder="...">
+				</div>
+			</div>
+
+			<button class="btn btn--turquoise btn--full-width">Submit</button>
+		</form>
+	</div>
+</div>
+
+
+
+<%- include("../partials/footer") %>

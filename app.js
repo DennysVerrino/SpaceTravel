@@ -5,8 +5,17 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
+var methodOverride = require("method-override");
 var User = require("./models/user");
+var VacationSpot = require("./models/vacationSpot");
+var Comment = require("./models/comment");
+var seedDB = require("./seeds");
 
+//-----------------------------------------------------------------------------------------------------------------------------------
+// all Routes
+var commentRoutes = require("./routes/comments.js");
+var vacationSpotRoutes = require("./routes/vacationSpots.js");
+var authRoutes = require("./routes/index.js");
 //-----------------------------------------------------------------------------------------------------------------------------------
 // How to use PostCSS
 // reads the css-file with nested css and variables
@@ -41,32 +50,7 @@ mongoose.connect("mongodb://localhost:27017/spacetravel");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
-
-//-----------------------------------------------------------------------------------------------------------------------------------
-// SCHEMA SETUP
-var vacationSpotSchema = new mongoose.Schema({
-	name: String,
-	station: String,
-	type: String,
-	guests: Number,
-	bedrooms: Number,
-	thumbnail: String,
-	rating: Number,
-	price: Number 
-});
-
-var VacationSpot = mongoose.model("VacationSpot", vacationSpotSchema);
-
-// VacationSpot.create(
-// 	{ name: "Helios", station: "Sun Station", type: "Apartment", guests: 2, bedrooms: 1, thumbnail: "/images/best_spot_moon.jpg", rating: 5.0, price:269 }, 
-// 	function(err, vacationSpot){
-// 		if(err){
-// 			console.log(err);
-// 		}	else{
-// 				console.log("newly created VS: ");
-// 				console.log(vacationSpot);
-// 		}	
-// 	});
+app.use(methodOverride("_method"));
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 // PASSPORT CONFIURATION
@@ -83,95 +67,97 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //-----------------------------------------------------------------------------------------------------------------------------------
+// seed the Database
+//seedDB();
+
+//-----------------------------------------------------------------------------------------------------------------------------------
 // Middleware to pass variables to every route like the currentUser
 app.use(function(req, res, next){
 	res.locals.currentUser = req.user;
 	next();
 });
 
-//-----------------------------------------------------------------------------------------------------------------------------------
-
-app.get("/", function(req, res){
-	//Get all vacationSpots from DB
-	VacationSpot.find({}, function(err, vacationSpots){
-		if(err){
-			console.log(err);
-		} else{
-			res.render("landing.ejs", {bestSpots: vacationSpots, currentUser: req.user});	
-		}
-	});
-});
-
-//INDEX ROUTE - shows all vacationSpots that match the search
-
-app.get("/vacationSpots", function(req, res){
-	//Get all vacationSpots from DB
-	var searchTerm = req.query.planet.charAt(0).toUpperCase() + req.query.planet.slice(1).toLowerCase();
-	
-	VacationSpot.find({name: searchTerm}, function(err, vacationSpots){
-		if(err){
-			console.log(err);
-		} else{
-			res.render("vacationSpots.ejs", {vacationSpots: vacationSpots, searchTerm: searchTerm});	
-		}
-	});
-});
+app.use(authRoutes);
+app.use(vacationSpotRoutes);
+app.use(commentRoutes);
 
 
-//SHOW ROUTE - shows one specific vacationSpot
-app.get("/vacationSpots/:id", function(req, res){
-	//find the vacationSpot with provided ID
-	VacationSpot.findById(req.params.id, function(err, foundVacationSpot){
-		if(err){
-			console.log(err);
-		} else{
-			//render show template of that vacationSpot 
-			res.render("show.ejs", {vacationSpot: foundVacationSpot});	
-		}
-	});
-});
-
-//-----------------------------------------------------------------------------------------------------------------------------------
-// AUTH ROUTES
-
-app.get("/register", function(req, res){
-	res.render("register.ejs");
-});
-
-//handle sign up logic
-app.post("/register", function(req, res){
-	var newUser = new User({username: req.body.username});
-	User.register(newUser, req.body.password, function(err, user){
-		if(err){
-			console.log(err);
-			return res.render("register.ejs");
-		}
-		passport.authenticate("local")(req, res, function(){
-			res.redirect("/");
-		});
-	});
-});
-
-//show login form
-app.get("/login", function(req, res){
-	res.render("login");
-});
-
-//handle login logic
-app.post("/login", passport.authenticate("local",
-	{
-		successRedirect: "/",
-		failureRedirect: "/login"
-	}), function(req, res){
-	
-});
-
-//logout route
-app.get("/logout", function(req, res){
-	req.logout();
-	res.redirect("/");
-});
-
+// var data = [
+// 	{ 
+// 		name: "Moon",
+// 		station: "Artemis Station",
+// 		type: "Apartment",
+// 		guests: 4,
+// 		bedrooms: 2,
+// 		thumbnail: "/images/best_spot_moon.jpg",
+// 		rating: 4,
+// 		price: 144,
+// 		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo 						 viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Quis ipsum suspendisse ultrices",
+// 		details: 
+// 			{
+// 				checkin: "6:00PM - 9:00PM",
+// 				checkout: "11:00AM",
+// 				firstAid: "Yes",
+// 				wifi: "Yes",
+// 				bathtub: "Yes",
+// 				airCon: "Yes",
+// 				pets: "Allowed"
+// 			}
+// 	},
+// 	{ 
+// 		name: "Mars",
+// 		station: "Apollo Station",
+// 		type: "Apartment",
+// 		guests: 2,
+// 		bedrooms: 1,
+// 		thumbnail: "/images/best_spot_mars.jpg",
+// 		rating: 4,
+// 		price: 93,
+// 		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo 						 viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Quis ipsum suspendisse ultrices. ipsum 						 dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo ",
+// 		details:
+// 			{
+// 				checkin: "6:00PM - 9:00PM",
+// 				checkout: "11:00AM",
+// 				firstAid: "Yes",
+// 				wifi: "Yes",
+// 				bathtub: "No",
+// 				airCon: "Yes",
+// 				pets: "Not Allowed"
+// 			}
+// 	},
+// 	{ 
+// 		name: "Venus",
+// 		station: "Aphrodite Station",
+// 		type: "Apartment",
+// 		guests: 2,
+// 		bedrooms: 1,
+// 		thumbnail: "/images/best_spot_venus.jpg",
+// 		rating: 5,
+// 		price: 269,
+// 		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo 						 viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Quis ipsum suspendisse ultrices. Lorem 						 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo 						 		 viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Quis ipsum suspendisse ultrices ",
+// 		details:
+// 			{
+// 				checkin: "6:00PM - 9:00PM",
+// 				checkout: "11:00AM",
+// 				firstAid: "Yes",
+// 				wifi: "No",
+// 				bathtub: "No",
+// 				airCon: "Yes",
+// 				pets: "Allowed"
+// 			}
+// 	}
+// ]
+// //add a few vacation Spots
+// data.forEach(function(seed){
+// 	VacationSpot.create(seed, function(err, vacationSpot){
+// 		if(err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("added a vacation spot!");
+// 			vacationSpot.save();
+// 		}
+// 	});
+// });
 
 app.listen(process.env.PORT || 3000, process.env.IP, function(){
 	console.log("The SpaceTravel server has started!");

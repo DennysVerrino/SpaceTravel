@@ -161,9 +161,10 @@ $darkBlue: #211740;
 	
 	&__tile{
 		
-		&--col-3{
+		&--3-col-atL{
 			flex: 0 0 100%;
 			max-width: 500px;
+			width: 100%;
 			margin-bottom: 30px;
 			
 			@mixin atSmall{
@@ -182,7 +183,25 @@ $darkBlue: #211740;
 			}
 		}
 		
-		&--col-2{
+		&--3-col-atM{
+			flex: 0 0 100%;
+			max-width: 500px;
+			width: 100%;
+			margin-bottom: 30px;
+			
+			@mixin atSmall{
+				padding-right: 15px;
+				padding-left: 15px;
+			}
+			
+			@mixin atMedium{
+				flex: 0 0 33.333333%;
+				max-width: 33.333333%;
+			}
+		}
+		
+		
+		&--2-col-atL{
 			flex: 0 0 100%;
 			max-width: 100%;
 			
@@ -338,11 +357,11 @@ $darkBlue: #211740;
 		
 		@mixin atSmall{
 			height: 350px;
+			padding: 0 15px;
 		}
 		
 		@mixin atMedium{
 			height: 500px;
-			padding: 0 15px;
 			margin: 35px 0;
 		}
 		
@@ -386,7 +405,7 @@ $darkBlue: #211740;
 		
 		&--with-ml{
 			
-			@mixin atMedium{
+			@mixin atSmall{
 				margin-left: 15px;
 			}
 		}
@@ -395,6 +414,13 @@ $darkBlue: #211740;
 	&__text{
 		font-size: 0.9rem;
 		margin: 12px 0;
+		
+		&--with-p{
+			
+			@mixin atSmall{
+				padding:0 15px;
+			}
+		}
 		
 		@mixin atMedium{
 			font-size: 1rem;
@@ -444,6 +470,8 @@ $darkBlue: #211740;
 			}
 			
 			i{
+				height:21px;
+				width:21px;
 				color: $mainOrange;
 				margin-right: 12px;
 				font-size: 1.2rem;
@@ -481,6 +509,9 @@ $darkBlue: #211740;
 	}
 }
 
+/*__________________________________________________________________________________ */
+/* review item */
+
 .review-item{
 	
 	padding: 24px;
@@ -502,12 +533,15 @@ $darkBlue: #211740;
 		top: -36px;
 		left: 50%;
 		transform: translateX(-50%);
+		background-color: $mainWhite;
+		border-radius: 36px;
 		
 		@mixin atMedium{
 			height: 96px;
 			width: 96px;
 			position: absolute;
 			top: -48px;
+			border-radius: 48px;
 		}
 		
 		i{
@@ -534,6 +568,7 @@ $darkBlue: #211740;
 		font-size: 0.9rem;
 		font-weight: 300;
 		line-height: 1.3125rem;
+		overflow-wrap: break-word;
 		
 		@mixin atMedium{
 			font-size: 1rem;
@@ -566,6 +601,66 @@ $darkBlue: #211740;
 	}
 }
 
+/*__________________________________________________________________________________ */
+/* review item */
+
+.review-form{
+	
+	&--with-mt{
+		margin-top: 35px;
+	}
+	
+	&--with-mb{
+		margin-bottom: 35px;
+	}
+	
+	@mixin atSmall{
+		padding: 0 15px;
+	}
+	
+	&__inputs-container{
+		width: 100%;
+		border: 1px solid $mainGrey;
+		border-radius: 5px;
+		position: relative;	
+	}
+	
+	&__input-container{
+		width: 100%;
+		position: relative;
+	}
+	
+	&__input-label{
+		position: absolute;
+		top: 15px;
+		left: 24px;
+		font-size: 0.9rem;
+		font-weight: 500;
+	}
+	
+	&__input{
+		border: none;
+		border-bottom: 1px solid $mainGrey;
+		padding: 24px;
+		padding-top: 35px;
+		width: 100%;
+		background-color: transparent;
+		font-weight: 300;
+	}
+	
+	&__textarea{
+		border: none;
+		border-bottom: 1px solid $mainGrey;
+		padding: 24px;
+		padding-top: 35px;
+		width: 100%;
+		background-color: transparent;
+		font-weight: 300;
+		resize: none;
+	}
+}
+
+/*__________________________________________________________________________________ */
 /* primary navigation */
 
 .primary-nav{
@@ -600,59 +695,66 @@ $darkBlue: #211740;
 /*__________________________________________________________________________________ */
 
 /* button */
-
 .btn{
-	background-color: rgba($mainTurquoise, 0.2);
-  	border: 2px solid $mainTurquoise;
-	border-radius: 4px;
- 	color: $mainWhite;
- 	padding: 10px 20px;
+	padding: 10px 20px;
   	text-align: center;
   	text-decoration: none;
   	display: inline-block;
   	font-size: 1.1rem;
 	cursor: pointer;
+	border-radius: 4px;
 	margin-top: 15px;
+	border: none;
 	
+	@mixin atMedium{
+		padding: 10px 20px;
+		font-size: 1.2rem;
+	}
+
+	@mixin atLarge{
+		padding: 10px 30px;
+		font-size: 1.5rem;
+	}
 	
-	&--no-margin{
-		@mixin atMedium{
-			margin-top: 0;
-		}	
+	&--turquoise{
+		background-color: $mainTurquoise;
+		color: $mainWhite;
+		
+		&--transparent{
+			background-color: rgba($mainTurquoise, 0);
+  			border: 2px solid $mainTurquoise;
+			color: $mainTurquoise;
+			font-weight: 400;
+		}
+		
+		/*
+		&--semi-transparent{
+			background-color: rgba($mainTurquoise, 0.2);
+  			border: 2px solid $mainTurquoise;
+			color: $mainWhite;
+		} 
+		*/
+	}
+	
+	&--orange{
+		background-color: $mainOrange;
+		color: $mainWhite;
 	}
 	
 	&--small{
 		font-size: 0.8rem;
 		padding: 5px 7px;
 		font-weight: 300;
-		margin-top: 15px;
-	}
-	
-	&--large{
-		
-		@mixin atMedium{
-			padding: 10px 20px;
-			font-size: 1.2rem;
-		}
-		
-		@mixin atLarge{
-			padding: 10px 30px;
-			font-size: 1.5rem;
-		}
 	}
 	
 	&--full-width{
 		width: 100%;
 	}
 	
-	&--not-transparent{
-		background-color: rgba($mainTurquoise, 1.0);
-	}
-	
-	&--full-transparent{
-		background-color: rgba($mainTurquoise, 0);
-		color: $mainTurquoise;
-		font-weight: 500;
+	&--no-marginT-atL{
+		@mixin atMedium{
+			margin-top: 0;
+		}
 	}
 }
 
@@ -662,7 +764,8 @@ $darkBlue: #211740;
 
 .site-header{
 	padding: 10px 0;
-	position: fixed;
+	position: absolute;
+	/*position: fixed;*/
 	z-index: 4;
 	width: 100%;
 	/* background-color: $darkBlue; */
@@ -901,6 +1004,10 @@ $darkBlue: #211740;
 
 	@mixin atLarge{
 		margin-top: 90px;
+	}
+	
+	&--inline{
+		display: inline;
 	}
 	
 	&__box{
@@ -1221,6 +1328,7 @@ $darkBlue: #211740;
 	color: $darkBlue;
 	margin-bottom: 50px;
 	width: 60%;
+	max-width: 300px;
 	margin-left: auto;
 	margin-right: auto;
 	
