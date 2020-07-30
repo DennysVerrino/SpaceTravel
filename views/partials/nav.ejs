@@ -1,5 +1,5 @@
 <header class="site-header">
-	<div class="site-header__container wrapper wrapper--wider">
+	<div class="site-header__container wrapper">
 		<a href="/">
 			<div class="site-header__logo">
 				<img src="/images/space_travel_logo.png">
@@ -11,7 +11,7 @@
 
 		<div class="site-header__menu-mobile">
 			<% if(!currentUser){ %>
-				<a href="/login"><i class="far fa-user"></i></a>
+				<a class="site-header__menu-mobile__login-icon" href="/login"><i class="far fa-user"></i></a>
 			<% } %>
 			<div class="site-header__menu-mobile__icon">
 				<div class="site-header__menu-mobile__icon--top"></div>
@@ -19,12 +19,12 @@
 				<div class="site-header__menu-mobile__icon--bottom"></div>
 			</div>
 		</div>
-		<div class="site-header__menu-desktop">
+		<div class="site-header__menu-content">
 			<nav class="primary-nav primary-nav--pull-right">
 				<ul>
-					<li><a href="#">Special Offers</a></li>
-					<li><a href="#">About Us</a></li>
-					<li><a href="#">Why Choose Us</a></li>
+					<li><a href="/#special-offers" id="special-offers-link">Special Offers</a></li>
+					<li><a href="/#about-us" id="about-us-link">About Us</a></li>
+					<li><a href="/#why-choose-us" id="why-choose-us-link">Why Choose Us</a></li>
 
 					<% if(!currentUser){ %>
 						<li><a href="/register">Sign Up</a></li>

@@ -3,6 +3,8 @@
 /* global rules */
 
 html{
+	scroll-behavior: smooth;
+	scroll-padding-top: 130px; /* height of sticky header */
 }
 
 body{
@@ -59,6 +61,10 @@ $darkBlue: #211740;
 /*__________________________________________________________________________________ */
 
 /* specials */
+#special-offers{
+
+}
+
 .text{
 	&--orange{
 		color: $mainOrange;
@@ -670,15 +676,31 @@ $darkBlue: #211740;
 		padding: 0;
 		display: flex;
 		justify-content: space-between;
+		flex-direction: column;
+		align-items: center;
+		
+		@mixin atMedium{
+			height: 70px;
+			flex-direction: row;
+		}
+		
+		@mixin atLarge{
+			height: 70px;
+		}
 	}
 	
 	li{
 		list-style: none;
-		margin-right: 40px;
+		width:100%;
+		text-align: center;
 		
+		@mixin atMedium{
+			width: auto;
+			margin-right: 40px;
 		
-		&:last-child{
-			margin-right: 0;
+			&:last-child{
+				margin-right: 0;
+			}
 		}
 	}
 	
@@ -689,6 +711,10 @@ $darkBlue: #211740;
 		padding: 12px 0;
 		font-size: 1rem;
 		font-weight: 200;
+		
+		&.is-current-link{
+			color: $mainTurquoise;
+		}
 	}
 }
 
@@ -764,21 +790,39 @@ $darkBlue: #211740;
 
 .site-header{
 	padding: 10px 0;
-	position: absolute;
-	/*position: fixed;*/
-	z-index: 4;
+	position: fixed;
+	z-index: 2;
 	width: 100%;
-	/* background-color: $darkBlue; */
+	transition: background-color .3s ease-out;
+	height: 60px;
+	
+	&--dark{
+		background-color: rgba(#212244, 0.95);
+	}
+	
+	&--is-expanded{
+		
+		height: 100vh;
+		background-color: rgba(#212244, 0.95);
+		
+		@mixin atMedium{
+			height: auto;
+			background-color: transparent;
+		}
+	}
 	
 	@mixin atMedium{
-		padding: 20px 0
+		height: auto;
+		padding: 20px 0;	
 	}
 	
 	@mixin atLarge{
-		padding: 30px 0
+		padding: 30px 0;
 	}
 	
 	&__container{
+		
+		position: relative;
 		display: flex;
 		justify-content: space-between;
 	}
@@ -787,14 +831,20 @@ $darkBlue: #211740;
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
-		height: 40px;
-		width: 140px;
-	
+		z-index: 5;
+		position: absolute;
+		left: 20px;
+		
+		@mixin atLarge{
+			height: 70px;	
+		}
 		
 		img{
 			height: 40px;
 			width: 40px;
 			margin-right: 5px;
+			display: block;
+			transition: transform .3s ease-out;
 			
 			@mixin atMedium{
 				height: 70px;
@@ -804,6 +854,10 @@ $darkBlue: #211740;
 			@mixin atLarge{
 				height: 100px;
 				width: 100px;
+				
+				.site-header--dark &{
+					transform: scale(.7) rotate(360deg);	
+				}
 			}
 		}
 		
@@ -818,11 +872,20 @@ $darkBlue: #211740;
 		}
 	}
 	
-	&__menu-desktop{
+	&__menu-content{
 		display: none;
+		padding-top:100px;
+		z-index: 4;
+		width: 100%;
+		
+		&--is-visible{
+			display: block;
+		}
 		
 		@mixin atMedium{
 			display: block;
+			padding-top: 0;
+			width: auto;
 		}
 	}
 	
@@ -832,24 +895,19 @@ $darkBlue: #211740;
 		align-items: center;
 		
 		height: 40px;
-		
+		z-index: 5;
+		position: absolute;
+		right: 20px;
 		
 		@mixin atMedium{
 			display: none;
 		}
 		
-		
-		i{
-			font-size: 1.1rem;
-			color: $mainOrange;
-			margin-right: 10px
-		}
-		
 		&__icon{
 			
 			position: relative;
-			height: 14px;
-			width: 20px;
+			height: 18px;
+			width: 22px;
 			
 			&--top{
 				position: absolute;
@@ -858,15 +916,19 @@ $darkBlue: #211740;
 				width: 100%;
 				height: 1px;
 				background-color: $mainWhite;
+				transform-origin: 0 0;
+				transition: transform .3s ease-out;
 			}
 			
 			&--middle{
 				position: absolute;
-				top: 6px;
+				top: 8px;
 				left: 0;
 				width: 100%;
 				height: 1px;
 				background-color: $mainWhite;
+				transform-origin: 0 50%;
+				transition: all .3s ease-out;
 			}
 			
 			&--bottom{
@@ -876,6 +938,37 @@ $darkBlue: #211740;
 				width: 100%;
 				height: 1px;
 				background-color: $mainWhite;
+				transform-origin: 0 100%;
+				transition: transform .3s ease-out;
+			}
+			
+			&--close-x{
+				.site-header__menu-mobile__icon--top{
+					transform: rotate(40deg) scaleX(1.25);
+				}
+
+				.site-header__menu-mobile__icon--middle{
+					transform: scalex(0);
+					opacity: 0;
+				}
+
+				.site-header__menu-mobile__icon--bottom{
+					transform: rotate(-40deg) scaleX(1.25);
+				}
+			}
+		}
+		
+		&__login-icon{
+			transition: all .3s ease-out;
+			
+			&--hidden{
+				opacity: 0;
+			}
+			
+			i{
+				font-size: 1.1rem;
+				color: $mainOrange;
+				margin-right: 20px
 			}
 		}
 	}
@@ -889,6 +982,7 @@ $darkBlue: #211740;
 	height: 400px;
     position: relative;
 	overflow: hidden;
+	z-index: 1;
 	
 	@mixin atMedium{
 		height: 450px;

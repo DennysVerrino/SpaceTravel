@@ -39,7 +39,10 @@ fs.readFile(__dirname + '/public/stylesheets/styles.css', (err, css) => {
       }
     })
 })
+
+
 //---------------------------------------------------------------------------------------------------------------------------------
+// Database CONFIURATION
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -90,7 +93,7 @@ app.use(commentRoutes);
 // 		guests: 4,
 // 		bedrooms: 2,
 // 		thumbnail: "/images/best_spot_moon.jpg",
-// 		rating: 4,
+// 		rating: 0,
 // 		price: 144,
 // 		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo 						 viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Quis ipsum suspendisse ultrices",
 // 		details: 
@@ -111,7 +114,7 @@ app.use(commentRoutes);
 // 		guests: 2,
 // 		bedrooms: 1,
 // 		thumbnail: "/images/best_spot_mars.jpg",
-// 		rating: 4,
+// 		rating: 0,
 // 		price: 93,
 // 		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo 						 viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Quis ipsum suspendisse ultrices. ipsum 						 dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo ",
 // 		details:
@@ -132,7 +135,7 @@ app.use(commentRoutes);
 // 		guests: 2,
 // 		bedrooms: 1,
 // 		thumbnail: "/images/best_spot_venus.jpg",
-// 		rating: 5,
+// 		rating: 0,
 // 		price: 269,
 // 		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo 						 viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Quis ipsum suspendisse ultrices. Lorem 						 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo 						 		 viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Quis ipsum suspendisse ultrices ",
 // 		details:

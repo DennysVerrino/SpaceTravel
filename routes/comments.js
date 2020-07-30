@@ -36,7 +36,6 @@ router.post("/vacationSpots/:id/comments", middleware.isLoggedIn, function(req, 
 					comment.author.id = req.user._id;
 					comment.author.username = req.user.username;
 					comment.created = new Date();
-					
 					comment.save();
 			
 					//connect new comment to vacation spot

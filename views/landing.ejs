@@ -3,7 +3,7 @@
 <%- include("partials/largeBanner") %>
 
 
-<div class="page-section page-section--lightBG">
+<div id="special-offers" class="page-section page-section--lightBG" data-matching-link="#special-offers-link">
 	<div class="wrapper">
 		<h2 class="page-section__title"><i class="fas fa-circle"></i>Special Offers</h2>
 		<p class="page-section__subtitle">Best 2020 places where people love to stay!</p>
@@ -24,6 +24,7 @@
 						<h4 class="card__info-box__subtitle"><%= bestSpot.name%></h4>
 						<p class="card__info-box__description"><%= bestSpot.type%> - <%= bestSpot.guests%> Guests - <%= bestSpot.bedrooms%> Bedrooms</p>
 						<div class="card__info-box__rating">
+							
 							<%= (Math.round(bestSpot.rating * 100) / 100).toFixed(1) %>
 							<% for(i = 0; i<bestSpot.rating; i++){ %>
 								<i class="fas fa-star"></i>
@@ -37,7 +38,7 @@
 	</div>
 </div>
 
-<div class="page-section page-section--dark page-section--fixed-height gradient__with-bg2">
+<div id="about-us" class="page-section page-section--dark page-section--fixed-height gradient__with-bg2" data-matching-link="#about-us-link">
 	<!--
 	<picture>
 		<img class="page-section__bg-image" src="/images/about_us_bg.jpg" alt="team shilouette">
@@ -54,7 +55,7 @@
 	</div>
 </div>
 
-<div class="page-section">
+<div id="why-choose-us" class="page-section" data-matching-link="#why-choose-us-link">
 	<div class="wrapper">
 		<h2 class="page-section__title"><i class="fas fa-circle"></i>Why Choose Us</h2>
 		<p class="page-section__subtitle">Our clients have been choosing SpaceTravel for a number of reasons</p>
