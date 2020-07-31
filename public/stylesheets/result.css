@@ -370,6 +370,7 @@ a{
 	padding: 0;
 }
 
+
 /*__________________________________________________________________________________ */
 
 /* variables */
@@ -1806,7 +1807,7 @@ a{
 		padding: 14px 12px 0px 12px;
 		width: 100%;
 		font-size: 0.8rem;
-		color: #c7ced6;
+		color: #8695a6;
 		margin-bottom: 5px
 	}
 
@@ -1832,6 +1833,21 @@ a{
 			height: 60px
 	}
 	}
+
+.form__select{
+		-webkit-appearance: none;
+		   -moz-appearance: none;
+		        appearance: none;
+		border: none;
+		cursor: pointer
+		
+		
+	}
+
+.form__select option{
+			color: #FFFFFF;
+			background-color: #263050;
+		}
 
 .form__input-separator{
 		display: none;
@@ -1868,31 +1884,31 @@ a{
 	}
 
 .form__input::-moz-placeholder {
-	  color: #c7ced6;
+	  color: #8695a6;
 	}
 
 .form__input:-ms-input-placeholder {
-	  color: #c7ced6;
+	  color: #8695a6;
 	}
 
 .form__input::-ms-input-placeholder {
-	  color: #c7ced6;
+	  color: #8695a6;
 	}
 
 &__input::-moz-placeholder {
-	  color: #c7ced6;
+	  color: #8695a6;
 	}
 
 &__input:-ms-input-placeholder {
-	  color: #c7ced6;
+	  color: #8695a6;
 	}
 
 &__input::-ms-input-placeholder {
-	  color: #c7ced6;
+	  color: #8695a6;
 	}
 
 .form__input::placeholder {
-	  color: #c7ced6;
+	  color: #8695a6;
 	}
 
 .form__input-label{
@@ -2467,3 +2483,72 @@ a{
 
 /*__________________________________________________________________________________ */
 
+/* reveal-item */
+.reveal-item{
+	opacity: 0;
+	transform: scale(1.05);
+	transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.reveal-item--is-visible{
+		opacity: 1;
+		transform: scale(1);
+	}
+
+/*__________________________________________________________________________________ */
+/* Datepicker */
+.ui-widget-header{
+	background-color: #2f305d;
+	color: #FFFFFF;
+	border: 0;
+	border-radius: 15px;
+} 
+
+.ui-datepicker{
+	padding: 0;
+	border: none;
+}
+
+.ui-datepicker table{
+	margin: 0;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active{
+	border: none;
+	background-color: #f5f5fd;
+	color: #6776a5;
+	border-radius: 5px;
+}
+
+.ui-widget{
+	font-family: 'MuseoModerno', cursive;
+}
+
+.ui-widget.ui-widget-content{
+	border: none;
+	box-shadow: 0 0 5px 0px rgba(54,57,70,0.14902);
+	border-radius: 20px;
+	padding: 10px;
+}
+
+.ui-widget-content{
+	color: #16dcd0;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight{
+	color: #fb9073;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover{
+	background-color: #16dcd0;
+	color: #FFFFFF;
+}
+
+.ui-widget-header .ui-icon{
+	background-image: url(../images/ui-icons_444444_256x240.png);
+}
+
+.ui-datepicker .ui-datepicker-prev:hover, .ui-datepicker .ui-datepicker-next:hover{
+	background-color: #16dcd0;
+	border: none;
+	border-radius: 20px;
+}

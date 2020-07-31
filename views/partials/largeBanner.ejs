@@ -8,25 +8,30 @@
 				<div class="form__box">
 					<div class="form__input-container">
 						<label class="form__input-label">planet</label>
-						<input type="text" name="planet" class="form__input" placeholder="Which planet?">
+						<select class="form__input form__select" name="planet" id="planet-select">
+							<option value="" disabled selected>Which planet?</option>
+							<option value="Moon">Moon</option>
+							<option value="Mars">Mars</option>
+							<option value="Venus">Venus</option>
+						</select>
 					</div>
 					<div class="form__input-separator">		
 					</div>
 					<div class="form__input-container form__input-container--half">
 						<label class="form__input-label">check-in</label>
-						<input type="text" class="form__input" placeholder="Begin?">
+						<input type="text" class="form__input" placeholder="Begin?" id="date-checkin">
 					</div>
 					<div class="form__input-separator form__input-separator--mobile">		
 					</div>
 					<div class="form__input-container form__input-container--half">
 						<label class="form__input-label">check-out</label>
-						<input type="text" class="form__input" placeholder="End?">
+						<input type="text" class="form__input" placeholder="End?" id="date-checkout">
 					</div>
 					<div class="form__input-separator">		
 					</div>
 					<div class="form__input-container">
 						<label class="form__input-label">guests</label>
-						<input type="number" class="form__input" placeholder="How many?">
+						<input type="text" class="form__input" placeholder="How many?" pattern="\d*">
 					</div>
 				</div>
 				<button class="btn btn--large btn--turquoise btn--no-marginT-atL">Explore</button>

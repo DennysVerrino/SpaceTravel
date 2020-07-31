@@ -134,15 +134,28 @@
 			<div class="review-form__inputs-container">
 				<div class="review-form__input-container">
 					<label class="review-form__input-label">title</label>
-					<input type="text" name="comment[title]" class="review-form__input" placeholder="...">
+					<input type="text" name="comment[title]" class="review-form__input" placeholder="..." required>
 				</div>
 				<div class="review-form__input-container">
 					<label class="review-form__input-label">text</label>
-					<textarea rows="5" maxlength="100" name="comment[text]" class="review-form__textarea" placeholder="..."></textarea>
+					<textarea rows="5" maxlength="100" name="comment[text]" class="review-form__textarea" placeholder="..." required></textarea>
 				</div>
 				<div class="review-form__input-container">
 					<label class="review-form__input-label">rating</label>
-					<input type="number" name="comment[rating]" class="review-form__input" placeholder="...">
+					<select class="review-form__input" name="comment[rating]" required>
+						<% for(i = 0; i < 5; i++){ %>
+							<option value="<%= i+1 %>">
+								<%= i+1 %> 
+								<%	if(i==0){ %>
+									<%=	"Star" %>
+								<%	}else{ %>
+									<%=	"Stars" %>
+								<%	} %>
+							</option>
+						<% } %>
+					</select>
+					
+					<!--<input type="number" name="comment[rating]" class="review-form__input" placeholder="..." required>-->
 				</div>
 			</div>
 

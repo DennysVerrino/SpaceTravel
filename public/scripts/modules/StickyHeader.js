@@ -38,11 +38,13 @@ class StickyHeader {
 	
 	calcSection(el){
 		if(window.scrollY + this.browserHeight > el.offsetTop && window.scrollY < el.offsetTop + el.offsetHeight){
-			let scrollPercent = el.getBoundingClientRect().y / this.browserHeight * 100;
+			let scrollPercent = el.getBoundingClientRect().top / this.browserHeight * 100;
 			if(scrollPercent < 25 && scrollPercent > 20 && this.scrollDirection == "down" || scrollPercent < 33 && this.scrollDirection == "up"){
-				let matchingLink = el.getAttribute("data-matching-link");
-				document.querySelectorAll(`.primary-nav a:not(${matchingLink})`).forEach(el => el.classList.remove("is-current-link"));
-				document.querySelector(matchingLink).classList.add("is-current-link");
+				if(el.getAttribute("data-matching-link")){
+					let matchingLink = el.getAttribute("data-matching-link");
+					document.querySelectorAll(`.primary-nav a:not(${matchingLink})`).forEach(el => el.classList.remove("is-current-link"));
+					document.querySelector(matchingLink).classList.add("is-current-link");  
+				}
 			} 
 		} 
 	}

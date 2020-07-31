@@ -40,7 +40,6 @@ fs.readFile(__dirname + '/public/stylesheets/styles.css', (err, css) => {
     })
 })
 
-
 //---------------------------------------------------------------------------------------------------------------------------------
 // Database CONFIURATION
 
@@ -116,6 +115,27 @@ app.use(commentRoutes);
 // 		thumbnail: "/images/best_spot_mars.jpg",
 // 		rating: 0,
 // 		price: 93,
+// 		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo 						 viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Quis ipsum suspendisse ultrices. ipsum 						 dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo ",
+// 		details:
+// 			{
+// 				checkin: "6:00PM - 9:00PM",
+// 				checkout: "11:00AM",
+// 				firstAid: "Yes",
+// 				wifi: "Yes",
+// 				bathtub: "No",
+// 				airCon: "Yes",
+// 				pets: "Not Allowed"
+// 			}
+// 	},
+// 	{ 
+// 		name: "Mars",
+// 		station: "Sun Station",
+// 		type: "Apartment",
+// 		guests: 4,
+// 		bedrooms: 2,
+// 		thumbnail: "/images/best_spot_mars.jpg",
+// 		rating: 0,
+// 		price: 400,
 // 		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo 						 viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Quis ipsum suspendisse ultrices. ipsum 						 dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo ",
 // 		details:
 // 			{

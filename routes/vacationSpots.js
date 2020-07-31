@@ -5,13 +5,13 @@ var VacationSpot = require("../models/vacationSpot");
 //INDEX ROUTE - shows all vacationSpots that match the search
 router.get("/vacationSpots", function(req, res){
 	//Get all vacationSpots from DB
-	var searchTerm = req.query.planet.charAt(0).toUpperCase() + req.query.planet.slice(1).toLowerCase();
-	
-	VacationSpot.find({name: searchTerm}, function(err, vacationSpots){
+	//var searchTerm = req.query.planet.charAt(0).toUpperCase() + req.query.planet.slice(1).toLowerCase();
+	var planet = req.query.planet;
+	VacationSpot.find({name: planet}, function(err, vacationSpots){
 		if(err){
 			console.log(err);
 		} else{
-			res.render("vacationSpots/index.ejs", {vacationSpots: vacationSpots, searchTerm: searchTerm});	
+			res.render("vacationSpots/index.ejs", {vacationSpots: vacationSpots, planet: planet});	
 		}
 	});
 });
