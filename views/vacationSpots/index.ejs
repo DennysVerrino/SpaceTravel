@@ -9,13 +9,15 @@
 		
 		<div class="grid">
 			<% vacationSpots.forEach(function(vacationSpot){ %>
-			<div class="grid__tile--col-3">
+			<div class="grid__tile--3-col-atL">
 				<div class="card card--borderR">
 					<div class="card__image-box">
 						<img src="<%= vacationSpot.thumbnail %>">
 					</div>
 					<div class="card__info-box">
-						<a href="/vacationSpots/<%= vacationSpot._id %>"><div class="card__info-box__details">Details</div></a>
+						<div class="card__info-box__details">
+							<a class=" btn btn--turquoise" href="/vacationSpots/<%= vacationSpot._id %>">Details</a>
+						</div>
 						<div class="card__info-box__title-box">
 							<h3 class="card__info-box__title"><%= vacationSpot.station %></h3>
 							<h3 class="card__info-box__price">$<%= vacationSpot.price %><span> / night</span></h3>

@@ -30,6 +30,7 @@ $mainWhite: #FFFFFF;
 $mainGrey: #c7ced6;
 $lightGrey: #F7FAFD;
 $mainOrange: #fb9073;
+$darkOrange: #ef4350;
 $mainTurquoise: #16dcd0;
 $darkTurquoise: #244a57;
 $mainBlue: #222f4b;
@@ -227,9 +228,10 @@ $darkBlue: #211740;
 .card{
 	width: 100%;
 	overflow: hidden;
+	box-shadow: 0 0 10px 0px #e8eaf4;
 	
 	&--borderR{
-		border-radius: 5px;	
+		border-radius: 10px;	
 	}
 	
 	&__image-box{
@@ -259,23 +261,14 @@ $darkBlue: #211740;
 		}
 		
 		&__details{
-			background-color: $mainTurquoise;
 			position: absolute;
-			top: -20px;
+			top: -37px;
 			left: 50%;
 			transform: translateX(-50%);
 			margin: 0 auto;
-			color: $mainWhite;
-			text-align: center;
-			border-radius: 20px;
-			font-size: 0.85rem;
-			padding: 10px;
-			font-weight: 500;
 			
 			@mixin atSmall{
-				top: -25px;
-				font-size: 1rem;
-				padding: 15px;
+				top: -40px;
 			}
 		}
 		
@@ -523,7 +516,7 @@ $darkBlue: #211740;
 	padding: 24px;
 	padding-top: 45px;
 	border: 1px solid $mainGrey;
-	border-radius: 5px;
+	border-radius: 20px;
 	position: relative;
 	margin-top: 35px;
 	
@@ -627,7 +620,7 @@ $darkBlue: #211740;
 	&__inputs-container{
 		width: 100%;
 		border: 1px solid $mainGrey;
-		border-radius: 5px;
+		border-radius: 20px;
 		position: relative;	
 	}
 	
@@ -652,6 +645,13 @@ $darkBlue: #211740;
 		width: 100%;
 		background-color: transparent;
 		font-weight: 300;
+		
+		
+		&:focus{
+			border-radius: 20px;
+			outline: none;
+			box-shadow: inset 0 0 0 2px $mainOrange;
+		}
 	}
 	
 	&__textarea{
@@ -663,6 +663,13 @@ $darkBlue: #211740;
 		background-color: transparent;
 		font-weight: 300;
 		resize: none;
+		display: block;
+		
+		&:focus{
+			border-radius: 20px;
+			outline: none;
+			box-shadow: inset 0 0 0 2px $mainOrange;
+		}
 	}
 }
 
@@ -711,9 +718,38 @@ $darkBlue: #211740;
 		padding: 12px 0;
 		font-size: 1rem;
 		font-weight: 200;
+		position: relative;
+		
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: 0px;
+			left: 50%;
+			transition: all .3s ease-in-out;
+			height: 2px;
+			width: 40px;
+			background-color: $mainOrange;
+			transform: translateX(-50%) scaleX(0);
+			transition: transform .3 ease-out;
+		}
+
+		&:hover:before {
+			transform: translateX(-50%) scaleX(1);
+		}
 		
 		&.is-current-link{
-			color: $mainTurquoise;
+			&:before {
+				content: "";
+				position: absolute;
+				bottom: 0px;
+				left: 50%;
+				transition: all .3s ease-in-out;
+				height: 2px;
+				width: 40px;
+				background-color: $mainOrange;
+				transform: translateX(-50%) scaleX(1);
+				transition: transform .3 ease-out;
+			}
 		}
 	}
 }
@@ -728,50 +764,145 @@ $darkBlue: #211740;
   	display: inline-block;
   	font-size: 1.1rem;
 	cursor: pointer;
-	border-radius: 4px;
+	border-radius: 15px;
 	margin-top: 15px;
 	border: none;
+	position: relative;
+	transform: scale(1);
+	transition: transform .2 ease-in-out;
 	
 	@mixin atMedium{
 		padding: 10px 20px;
 		font-size: 1.2rem;
+		border-radius: 20px;
 	}
 
 	@mixin atLarge{
 		padding: 10px 30px;
-		font-size: 1.5rem;
+		font-size: 1.3rem;
+	}
+	
+	&--clicked{
+		animation: click .3s 1;
+	}
+	
+	@keyframes click {
+		0%{
+			transform: scale(1);
+		}
+
+		50%{
+			transform: scale(0.9);
+		}
+
+		100%{
+			transform: scale(1);
+		}
+	}
+	
+	&:focus{
+		outline: none;
 	}
 	
 	&--turquoise{
 		background-color: $mainTurquoise;
 		color: $mainWhite;
+		transition: all 0.2s ease-in-out;
+		
+		&:before {
+			content: "";
+			position: absolute;
+			top: 0px;
+			bottom: 0px;
+			left: 0px;
+			right: 0px;
+			border: 2px solid $mainTurquoise;
+			transition: all .3s ease-in-out;
+			z-index: -1;
+			border-radius: 20px;
+			
+			@mixin atMedium{
+				border-radius: 25px;
+			}
+		}
+
+		&:hover:before {
+			top: -7px;
+			bottom: -7px;
+			left: -7px;
+			right: -7px;
+			border: 2px solid $mainOrange;
+		}
+
+		&:hover {
+			
+			background-color: $mainOrange;
+		}
 		
 		&--transparent{
-			background-color: rgba($mainTurquoise, 0);
+			background: rgba($mainTurquoise, 0);
   			border: 2px solid $mainTurquoise;
 			color: $mainTurquoise;
 			font-weight: 400;
 		}
-		
-		/*
-		&--semi-transparent{
-			background-color: rgba($mainTurquoise, 0.2);
-  			border: 2px solid $mainTurquoise;
-			color: $mainWhite;
-		} 
-		*/
 	}
 	
 	&--orange{
 		background-color: $mainOrange;
 		color: $mainWhite;
+		
+		&:before {
+			content: "";
+			position: absolute;
+			top: 0px;
+			bottom: 0px;
+			left: 0px;
+			right: 0px;
+			border: 2px solid $mainOrange;
+			transition: all .3s ease-in-out;
+			z-index: -1;
+			border-radius: 25px;
+		}
+
+		&:hover:before {
+			top: -7px;
+			bottom: -7px;
+			left: -7px;
+			right: -7px;
+			border: 2px solid $darkOrange;
+		}
+
+		&:hover {
+			animation: click .3s 1;
+			transform: scale(1.03);
+			background-color: $darkOrange;
+		}
 	}
 	
 	&--small{
 		font-size: 0.8rem;
 		padding: 5px 7px;
 		font-weight: 300;
+		border-radius: 8px;
+		
+		&:hover:before {
+			top: -5px;
+			bottom: -5px;
+			left: -5px;
+			right: -5px;
+			border: 1px solid $mainOrange;
+			border-radius: 12px;
+		}
 	}
+	
+	&--slim{
+		border-radius: 15px;
+		
+		&:hover:before {
+			border-radius: 20px;
+		}
+	}
+	
 	
 	&--full-width{
 		width: 100%;
@@ -1111,7 +1242,7 @@ $darkBlue: #211740;
 		
 		@mixin atMedium{
 			background-color: rgba(255, 255, 255, 0.075);
-			border-radius: 4px;
+			border-radius: 20px;
 			margin-right: 15px;
 			flex-wrap: nowrap;
 		}
@@ -1139,7 +1270,7 @@ $darkBlue: #211740;
 	&__input{
 		background-color: rgba(255, 255, 255, 0.075);
 		border: none;
-		border-radius: 4px;
+		border-radius: 15px;
 		height: 43px;
 		padding: 14px 12px 0px 12px;
 		width: 100%;
@@ -1148,15 +1279,15 @@ $darkBlue: #211740;
 		margin-bottom: 5px;
 		
 		&:focus{
-			outline-offset: 0px;
-			outline: 2px solid $mainOrange;
+			outline: none;
+			box-shadow: inset 0 0 0 1pt $mainOrange;
 		}
 		
 		@mixin atMedium{
 			height: 50px;
 			font-size: 0.8125rem;
 			margin-bottom: 0;
-			border-radius: 0;
+			border-radius: 20px;
 			background-color: transparent;
 		}
 		
@@ -1224,7 +1355,7 @@ $darkBlue: #211740;
 
 .login-form{
 	background-color: $mainWhite;
-	border-radius: 3px;
+	border-radius: 25px;
 	padding: 30px;
 	width: 100%;
 	max-width: 260px;
@@ -1234,6 +1365,7 @@ $darkBlue: #211740;
 		justify-content: flex-start;
 		align-items: center;
 		margin-bottom: 20px;
+		padding-right: 20px;
 	
 		
 		img{
@@ -1281,14 +1413,17 @@ $darkBlue: #211740;
 		background-color: #e8ebed;
 		width: 100%;
 		height: 43px;
-		border-radius: 4px;
+		border-radius: 15px;
 		margin-top: 7px;
+		position: relative;
 	}
 	
 	&__input-iconbox{
 		display: flex;
 		align-items: center;
 		margin-left: 15px;
+		position: absolute;
+    	top: 12px;
 		
 		i{
 			color: $mainOrange;
@@ -1301,8 +1436,14 @@ $darkBlue: #211740;
 		margin-bottom: 0;
 		border: none;
 		background-color: transparent;
-		padding: 10px 15px;
+		padding: 10px 15px 10px 40px;
 		font-size: 0.85rem;
+		border-radius: 15px;
+		
+		&:focus{
+			outline: none;
+			box-shadow: inset 0 0 0 2px $mainOrange;
+		}
 	}
 	
 	&__signup-line{
@@ -1311,9 +1452,7 @@ $darkBlue: #211740;
 		font-size: 0.6rem;
 		margin: 20px 0 0 0;
 		
-		a{
-			
-			
+		a{	
 			&:visited{
 				color: $darkBlue;
 			}
@@ -1425,16 +1564,24 @@ $darkBlue: #211740;
 	max-width: 300px;
 	margin-left: auto;
 	margin-right: auto;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
 	
 	@mixin atLarge{
 		width: 100%;
 	}
 	
 	&__icon{
+		border: 2px solid $mainTurquoise;
+		border-radius: 20px;
 		height: 40px;
+		width: 40px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		padding: 30px;
+		margin-bottom: 10px;
 	}
 	
 	i{
@@ -1536,16 +1683,44 @@ $darkBlue: #211740;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		
 		width: 32px;
 		height: 32px;
 		border: 1px solid $mainGrey;
-		border-radius: 5px;
+		border-radius: 10px;
 		margin-right: 10px;
+		color: $mainWhite;
+		
+		&:focus{
+			outline: none;
+			animation: click2 .3s 1;
+		}
+		
+		@keyframes click2 {
+			0%{
+				transform: scale(1);
+				color: $mainWhite;
+				border: 1px solid $mainGrey;
+			}
+			
+			50%{
+				transform: scale(0.8);
+				color: $mainOrange;
+				border: 1px solid $mainOrange
+			}
+			
+			100%{
+				transform: scale(1);
+				color: $mainOrange;
+				border: 1px solid $mainOrange;
+			}
+		}
 		
 		@mixin atMedium{
 			width: 21px;
 			height: 21px;
+			transform: scale(1);
+			transition: all .3 ease-in-out;
+			border-radius: 5px;
 		}
 		
 		i{
@@ -1553,6 +1728,22 @@ $darkBlue: #211740;
 			
 			@mixin atMedium{
 				font-size: 0.7rem;
+				transition: transform .3 ease-in-out;
+			}
+		}
+		
+		&:hover {
+			
+			@mixin atMedium{
+				transform: scale(1.2);
+				border: 1px solid $mainOrange;
+			}
+			
+			i{
+				@mixin atMedium{
+					color: $mainOrange;
+					font-size: 0.8rem;
+				}
 			}
 		}
 	}
@@ -1605,6 +1796,15 @@ $darkBlue: #211740;
 		a{
 			color: $mainGrey;
 			text-decoration: none;
+			transition: color .3 ease-out;
+			
+			&:hover{
+				color: $mainOrange;
+			}
+			
+			&:focus{
+				outline: none;
+			}
 		}
 		
 		a li{

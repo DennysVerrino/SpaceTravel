@@ -43,9 +43,7 @@ class StickyHeader {
 				let matchingLink = el.getAttribute("data-matching-link");
 				document.querySelectorAll(`.primary-nav a:not(${matchingLink})`).forEach(el => el.classList.remove("is-current-link"));
 				document.querySelector(matchingLink).classList.add("is-current-link");
-			} //e if (scrollPercent == 0 && this.scrollDirection == "up") {
-			// document.querySelector("#special-offers-link").classList.remove("is-current-link");
-			// }
+			} 
 		} 
 	}
 }
