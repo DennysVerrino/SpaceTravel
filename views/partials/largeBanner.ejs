@@ -8,8 +8,8 @@
 				<div class="form__box">
 					<div class="form__input-container">
 						<label class="form__input-label">planet</label>
-						<select class="form__input form__select" name="planet" id="planet-select">
-							<option value="" disabled selected>Which planet?</option>
+						<select class="form__input form__select" name="search[planet]" id="planet-select">
+							<option value="" selected>Which planet?</option>
 							<option value="Moon">Moon</option>
 							<option value="Mars">Mars</option>
 							<option value="Venus">Venus</option>
@@ -19,19 +19,19 @@
 					</div>
 					<div class="form__input-container form__input-container--half">
 						<label class="form__input-label">check-in</label>
-						<input type="text" class="form__input" placeholder="Begin?" id="date-checkin">
+						<input type="text" class="form__input" placeholder="Begin?" id="date-checkin" name="search[checkin]">
 					</div>
 					<div class="form__input-separator form__input-separator--mobile">		
 					</div>
 					<div class="form__input-container form__input-container--half">
 						<label class="form__input-label">check-out</label>
-						<input type="text" class="form__input" placeholder="End?" id="date-checkout">
+						<input type="text" class="form__input" placeholder="End?" id="date-checkout" name="search[checkout]">
 					</div>
 					<div class="form__input-separator">		
 					</div>
 					<div class="form__input-container">
 						<label class="form__input-label">guests</label>
-						<input type="text" class="form__input" placeholder="How many?" pattern="\d*">
+						<input type="text" class="form__input" placeholder="How many?" pattern="\d*" name="search[guestNum]">
 					</div>
 				</div>
 				<button class="btn btn--large btn--turquoise btn--no-marginT-atL">Explore</button>

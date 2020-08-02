@@ -57,6 +57,11 @@ router.get("/logout", function(req, res){
 	res.redirect("/");
 });
 
+//legal route
+router.get("/imprint", function(req, res){
+	res.render("legal.ejs");	
+});
+
 //MIDDLEWARE
 function isLoggedIn(req, res, next){
 	if(req.isAuthenticated()){

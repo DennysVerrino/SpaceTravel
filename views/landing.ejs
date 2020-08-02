@@ -27,9 +27,13 @@
 						<p class="card__info-box__description"><%= bestSpot.type%> - <%= bestSpot.guests%> Guests - <%= bestSpot.bedrooms%> Bedrooms</p>
 						<div class="card__info-box__rating">
 							
-							<%= (Math.round(bestSpot.rating * 100) / 100).toFixed(1) %>
-							<% for(i = 0; i<bestSpot.rating; i++){ %>
-								<i class="fas fa-star"></i>
+							<% if(bestSpot.rating == 0){ %>
+								<%= "not rated yet" %>
+							<% } else { %>
+								<%= (Math.round(bestSpot.rating * 100) / 100).toFixed(1) %>
+								<% for(i = 0; i<bestSpot.rating; i++){ %>
+									<i class="fas fa-star"></i>
+								<% } %>	
 							<% } %>	
 						</div>
 					</div>	

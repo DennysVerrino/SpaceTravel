@@ -382,9 +382,170 @@ a{
 /*__________________________________________________________________________________ */
 
 /* specials */
-#special-offers{
 
+.logo{
+	position: relative;
+	margin-right: 5px
 }
+
+@media(min-width: 900px){
+
+.logo{
+		margin-right: 10px
+}
+	}
+
+@media(min-width: 1200px){
+
+.logo{
+		margin-right: 15px
+}
+	}
+
+.logo__outer-line{
+		display: flex;
+		justify-content:center;
+		align-items: center;
+		border: 1px solid #FFFFFF;
+		border-radius: 20px;
+		width: 40px;
+		height: 40px
+	}
+
+@media(min-width: 900px){
+	
+	.logo__outer-line{
+			border-radius: 30px;
+			width: 60px;
+			height: 60px
+	}
+	}
+
+@media(min-width: 1200px){
+	
+	.logo__outer-line{
+			border-radius: 50px;
+			width: 100px;
+			height: 100px
+	}
+	}
+
+.logo__inner-line{
+		border: 1px solid #FFFFFF;
+		border-radius: 13px;
+		width: 26px;
+		height: 26px;
+		display: flex;
+		justify-content:center;
+		align-items: center
+	}
+
+@media(min-width: 900px){
+	
+	.logo__inner-line{
+			border-radius: 20px;
+			width: 40px;
+			height: 40px
+	}
+	}
+
+@media(min-width: 1200px){
+	
+	.logo__inner-line{
+			border-radius: 33px;
+			width: 66px;
+			height: 66px
+	}
+	}
+
+.logo__center-planet{
+		width: 12px;
+		height: 12px;
+		border-radius: 7px;
+		background-color: #fb9073
+	}
+
+@media(min-width: 900px){
+	
+	.logo__center-planet{
+			border-radius: 10px;
+			width: 20px;
+			height: 20px
+	}
+	}
+
+@media(min-width: 1200px){
+	
+	.logo__center-planet{
+			border-radius: 26px;
+			width: 32px;
+			height: 32px
+	}
+	}
+
+.logo__blue-planet-1{
+		width: 10px;
+		height: 10px;
+		border-radius: 5px;
+		background-color: #16dcd0;
+		position: absolute;
+		top: 4px;
+    	left: -1px
+	}
+
+@media(min-width: 900px){
+	
+	.logo__blue-planet-1{
+			border-radius: 7px;
+			width: 14px;
+			height: 14px;
+			top: 3px;
+   			left: 2px
+	}
+	}
+
+@media(min-width: 1200px){
+	
+	.logo__blue-planet-1{
+			border-radius: 10px;
+			width: 20px;
+			height: 20px;
+			top: 7px;
+			left: 3px
+	}
+	}
+
+.logo__blue-planet-2{
+		width: 8px;
+		height: 8px;
+		border-radius: 4px;
+		background-color: #16dcd0;
+		position: absolute;
+		top: 27px;
+    	left: 22px
+	}
+
+@media(min-width: 900px){
+	
+	.logo__blue-planet-2{
+			border-radius: 6px;
+			width: 12px;
+			height: 12px;
+			top: 40px;
+    		left: 34px
+	}
+	}
+
+@media(min-width: 1200px){
+	
+	.logo__blue-planet-2{
+			border-radius: 9px;
+			width: 18px;
+			height: 18px;
+			top: 68px;
+    		left: 56px
+	}
+	}
 
 .text--orange{
 		color: #fb9073;
@@ -2493,6 +2654,56 @@ a{
 		opacity: 1;
 		transform: scale(1);
 	}
+
+
+/*__________________________________________________________________________________ */
+
+/* Imprint / impressum */
+.imprint-section{
+	padding:30px 0;
+}
+.imprint-section__title{
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin: 50px 0 30px 0
+	}
+@media(min-width: 900px){
+	
+	.imprint-section__title{
+			font-size: 2rem
+	}
+	}
+.imprint-section__subtitle{
+		font-weight: 500;
+		font-size: 1.1rem;
+		margin: 0
+	}
+@media(min-width: 900px){
+	
+	.imprint-section__subtitle{
+			font-size: 1.2rem
+	}
+	}
+.imprint-section__text{
+		font-size: 0.9rem;
+		margin: 12px 0
+	}
+@media(min-width: 900px){
+	
+	.imprint-section__text{
+			font-size: 1rem
+	}
+	}
+.imprint-section a{
+		color: #16dcd0;
+	}
+.imprint-section__separator{
+		height: 1px;
+		width: 100%;
+		background-color: #dfe2ea;
+		padding: 0 15px;
+	}	
+
 
 /*__________________________________________________________________________________ */
 /* Datepicker */

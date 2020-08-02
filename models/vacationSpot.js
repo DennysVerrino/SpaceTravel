@@ -27,7 +27,11 @@ var vacationSpotSchema = new mongoose.Schema({
 			ref: "Comment"
 		}
 	]
+	
+	
 });
+
+
 
 var VacationSpot = mongoose.model("VacationSpot", vacationSpotSchema);
 

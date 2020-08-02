@@ -4,7 +4,7 @@
 
 <div class="page-section">
 	<div class="wrapper">
-		<h2 class="page-section__title"><i class="fas fa-circle"></i>Locations on <%= planet %></h2>
+		<h2 class="page-section__title"><i class="fas fa-circle"></i>Locations on <%= search.planet %></h2>
 		<p class="page-section__subtitle">...</p>
 		
 		<div class="grid">
@@ -25,9 +25,13 @@
 						<h4 class="card__info-box__subtitle"><%= vacationSpot.name%></h4>
 						<p class="card__info-box__description"><%= vacationSpot.type%> - <%= vacationSpot.guests%> Guests - <%= vacationSpot.bedrooms%> Bedrooms</p>
 						<div class="card__info-box__rating">
-							<%= (Math.round(vacationSpot.rating * 100) / 100).toFixed(1) %>
-							<% for(i = 0; i<vacationSpot.rating; i++){ %>
-								<i class="fas fa-star"></i>
+							<% if(vacationSpot.rating == 0){ %>
+								<%= "not rated yet" %>
+							<% } else { %>
+								<%= (Math.round(vacationSpot.rating * 100) / 100).toFixed(1) %>
+								<% for(i = 0; i<vacationSpot.rating; i++){ %>
+									<i class="fas fa-star"></i>
+								<% } %>	
 							<% } %>	
 						</div>
 					</div>	

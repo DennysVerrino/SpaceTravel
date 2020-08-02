@@ -4,18 +4,39 @@ var VacationSpot = require("../models/vacationSpot");
 
 //INDEX ROUTE - shows all vacationSpots that match the search
 router.get("/vacationSpots", function(req, res){
-	//Get all vacationSpots from DB
-	//var searchTerm = req.query.planet.charAt(0).toUpperCase() + req.query.planet.slice(1).toLowerCase();
-	var planet = req.query.planet;
-	VacationSpot.find({name: planet}, function(err, vacationSpots){
-		if(err){
-			console.log(err);
-		} else{
-			res.render("vacationSpots/index.ejs", {vacationSpots: vacationSpots, planet: planet});	
+	//Get all vacationSpots from DB that match the search
+	var search = req.query.search;
+	
+	if(search.planet == undefined){
+		VacationSpot.find({}, function(err, vacationSpots){
+			if(err){
+				console.log(err);
+			} else{
+				search.planet ="all available planets";
+				res.render("vacationSpots/index.ejs", {vacationSpots: vacationSpots, search: search});	
+			}
+		});
+	} 
+	else {
+		if(search.guestNum == ""){
+			VacationSpot.find({name: search.planet}, function(err, vacationSpots){
+				if(err){
+					console.log(err);
+				} else{
+					res.render("vacationSpots/index.ejs", {vacationSpots: vacationSpots, search: search});	
+				}
+			});
+		} else {
+			VacationSpot.find({name: search.planet, guests: search.guestNum}, function(err, vacationSpots){
+				if(err){
+					console.log(err);
+				} else{
+					res.render("vacationSpots/index.ejs", {vacationSpots: vacationSpots, search: search});	
+				}
+			});
 		}
-	});
+	}
 });
-
 
 //SHOW ROUTE - shows one specific vacationSpot
 router.get("/vacationSpots/:id", function(req, res){

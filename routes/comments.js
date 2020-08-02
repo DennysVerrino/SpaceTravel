@@ -22,7 +22,7 @@ var middleware = require("../middleware/index.js");
 //CREATE ROUTE - create comment
 router.post("/vacationSpots/:id/comments", middleware.isLoggedIn, function(req, res){
 	//lookup vacation spot using id
-	VacationSpot.findById(req.params.id, function(err, foundVacationSpot){
+	VacationSpot.findById(req.params.id).populate("comments").exec(function(err, foundVacationSpot){
 		if(err){
 			console.log(err);
 			res.redirect("/vacationSpots/" + foundVacationSpot._id);
@@ -39,13 +39,16 @@ router.post("/vacationSpots/:id/comments", middleware.isLoggedIn, function(req, 
 					comment.save();
 			
 					//connect new comment to vacation spot
-					foundVacationSpot.comments.push(comment);
+					foundVacationSpot.comments.push(comment);	
+					foundVacationSpot.rating = calcVacationSpotRating(foundVacationSpot);
+					
 					foundVacationSpot.save();
 					
 					//redirect campground show page
 					res.redirect("/vacationSpots/" + foundVacationSpot._id);
 				}
 			});
+			
 		}
 	});
 });
@@ -67,20 +70,65 @@ router.put("/vacationSpots/:id/comments/:comment_id", middleware.checkCommentOwn
 		if(err){
 			res.redirect("back");
 		} else {
-			res.redirect("/vacationSpots/" + req.params.id);
+			
+			VacationSpot.findById(req.params.id).populate("comments").exec(function(err, foundVacationSpot){
+				if(err){
+					console.log(err);
+					res.redirect("/vacationSpots/" + foundVacationSpot._id);
+				} else {
+					foundVacationSpot.rating = calcVacationSpotRating(foundVacationSpot);
+					foundVacationSpot.save();
+					
+					res.redirect("/vacationSpots/" + req.params.id);
+				}
+			});
 		}
 	});
 });
 
 //DESTROY ROUTE - delete comment
 router.delete("/vacationSpots/:id/comments/:comment_id", middleware.checkCommentOwnership, function(req,res){
-	Comment.findByIdAndRemove(req.params.comment_id, function(err){
+	VacationSpot.findById(req.params.id).populate("comments").exec(function(err, foundVacationSpot){
 		if(err){
-			res.redirect("back");
+			console.log(err);
+			res.redirect("/vacationSpots/" + foundVacationSpot._id);
 		} else {
-			res.redirect("/vacationSpots/" + req.params.id);
+			//create new comment
+			Comment.findByIdAndRemove(req.params.comment_id, function(err){
+				if(err){
+					res.redirect("back");
+				} else {
+					foundVacationSpot.comments.remove({_id: req.params.comment_id});
+					
+					foundVacationSpot.rating = calcVacationSpotRating(foundVacationSpot);
+					foundVacationSpot.save();
+					
+					res.redirect("/vacationSpots/" + req.params.id);
+				}
+			});
 		}
 	});
 });
+
+
+//calculation of average rating for vacationspots
+
+function calcVacationSpotRating(vacationSpot){
+	var ratingAverage = 0; 
+	var counter = 0; 
+	
+	if(vacationSpot.comments != []){
+		
+		vacationSpot.comments.forEach(function(comment){
+			ratingAverage += comment.rating;
+			counter++;
+		});
+		
+		ratingAverage /= counter;
+	}
+	
+	return ratingAverage;
+}
+
 
 module.exports= router;
