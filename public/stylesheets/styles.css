@@ -265,6 +265,12 @@ $darkBlue: #211740;
 	background: linear-gradient(0deg, $darkTurquoise, $mainBlue);
 }
 
+.container{
+	display: flex;
+	justify-content:center;
+	margin: 10px 0 40px 0;
+}
+
 /*__________________________________________________________________________________ */
 
 /* row and column layout */
@@ -513,6 +519,14 @@ $darkBlue: #211740;
 		font-weight: 500;
 		font-size: 1.1rem;
 		margin: 0;
+		
+		&--mt{
+			margin-top: 30px;
+		}
+		
+		&--mb{
+			margin-bottom: 20px;
+		}
 		
 		@mixin atMedium{
 			font-size: 1.2rem;
@@ -771,6 +785,8 @@ $darkBlue: #211740;
 		width: 100%;
 		background-color: transparent;
 		font-weight: 300;
+		display: flex;
+		align-items: center;
 		
 		
 		&:focus{
@@ -796,6 +812,15 @@ $darkBlue: #211740;
 			outline: none;
 			box-shadow: inset 0 0 0 2px $mainOrange;
 		}
+	}
+	
+	&__radio-label{
+		font-size: 0.9rem;
+		margin-right: 10px;
+	}
+	
+	&__radio{
+		margin-right: 20px;
 	}
 }
 
@@ -884,7 +909,7 @@ $darkBlue: #211740;
 
 /* button */
 .btn{
-	padding: 10px 20px;
+	padding: 10px 14px;
   	text-align: center;
   	text-decoration: none;
   	display: inline-block;
@@ -901,6 +926,7 @@ $darkBlue: #211740;
 		padding: 10px 20px;
 		font-size: 1.2rem;
 		border-radius: 20px;
+		padding: 15px 20px;
 	}
 
 	@mixin atLarge{

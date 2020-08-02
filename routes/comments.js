@@ -117,17 +117,17 @@ function calcVacationSpotRating(vacationSpot){
 	var ratingAverage = 0; 
 	var counter = 0; 
 	
-	if(vacationSpot.comments != []){
-		
+	if(vacationSpot.comments.length != 0){
+
 		vacationSpot.comments.forEach(function(comment){
 			ratingAverage += comment.rating;
 			counter++;
 		});
-		
+
 		ratingAverage /= counter;
 	}
-	
-	return ratingAverage;
+
+	return ratingAverage;	
 }
 
 

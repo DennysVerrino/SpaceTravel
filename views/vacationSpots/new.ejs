@@ -1,0 +1,110 @@
+<%- include("../partials/header") %>
+<%- include("../partials/nav") %>
+<%- include("../partials/smallBanner") %>
+
+<div class="show-section">
+	<div class="wrapper wrapper--maxWidth-1000">
+		<h3 class="show-section__title">Create a new Vacation Spot</h3>
+
+		<form class="review-form review-form--with-mt review-form--with-mb" action="/vacationSpots" method="POST">
+			<h4 class="show-section__subtitle show-section__subtitle--mb">General Information</h4>
+			
+			<div class="review-form__inputs-container">
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Planet</label>
+					<input type="text" name="vacationSpot[name]" class="review-form__input" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Station Name</label>
+					<input type="text" name="vacationSpot[station]" class="review-form__input" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Type</label>
+					<select class="review-form__input" name="vacationSpot[type]" required>
+							<option value="Apartment">Apartment</option>
+					</select>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Guests</label>
+					<input type="text" name="vacationSpot[guests]" class="review-form__input" pattern="\d*" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Bedrooms</label>
+					<input type="text" name="vacationSpot[bedrooms]" class="review-form__input" pattern="\d*" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Picture Path</label>
+					<input type="text" name="vacationSpot[thumbnail]" class="review-form__input" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Price</label>
+					<input type="text" name="vacationSpot[price]" class="review-form__input" pattern="\d*" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Description</label>
+					<textarea rows="5" maxlength="100" name="vacationSpot[description]" class="review-form__textarea" required></textarea>
+				</div>
+			</div>
+			
+			<h4 class="show-section__subtitle show-section__subtitle--mt show-section__subtitle--mb">Details</h4>
+			<div class="review-form__inputs-container">
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Check-in</label>
+					<input type="text" name="vacationSpot[details.checkin]" class="review-form__input" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Check-Out</label>
+					<input type="text" name="vacationSpot[details.checkout]" class="review-form__input" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">First Aid Kit</label>
+					<div class="review-form__input">
+						<label class="review-form__radio-label">Yes</label>
+						<input class="review-form__radio" type="radio" name="vacationSpot[details.firstAid]" required value="Yes">
+						<label class="review-form__radio-label">No</label>
+						<input class="review-form__radio" type="radio" name="vacationSpot[details.firstAid]" required value="No">
+					</div>	
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Wifi</label>
+					<div class="review-form__input">
+						<label class="review-form__radio-label">Yes</label>
+						<input class="review-form__radio" type="radio" name="vacationSpot[details.wifi]" required value="Yes">
+						<label class="review-form__radio-label">No</label>
+						<input class="review-form__radio" type="radio" name="vacationSpot[details.wifi]" required value="No">
+					</div>	
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Bathtub</label>
+					<div class="review-form__input">
+						<label class="review-form__radio-label">Yes</label>
+						<input class="review-form__radio" type="radio" name="vacationSpot[details.bathtub]" required value="Yes">
+						<label class="review-form__radio-label">No</label>
+						<input class="review-form__radio" type="radio" name="vacationSpot[details.bathtub]" required value="No">
+					</div>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Air Conditioner</label>
+					<div class="review-form__input">
+						<label class="review-form__radio-label">Yes</label>
+						<input class="review-form__radio" type="radio" name="vacationSpot[details.airCon]" required value="Yes">
+						<label class="review-form__radio-label">No</label>
+						<input class="review-form__radio" type="radio" name="vacationSpot[details.airCon]" required value="No">
+					</div>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Pets</label>
+					<div class="review-form__input">
+						<label class="review-form__radio-label">Allowed</label>
+						<input class="review-form__radio" type="radio" name="vacationSpot[details.pets]" required value="Allowed">
+						<label class="review-form__radio-label">Not Allowed</label>
+						<input class="review-form__radio" type="radio" name="vacationSpot[details.pets]" required value="Not Allowed">
+					</div>	
+				</div>
+			</div>	
+			<button class="btn btn--turquoise btn--full-width">Submit</button>
+		</form>
+	</div>
+</div>
+
+<%- include("../partials/footer") %>

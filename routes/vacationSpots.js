@@ -1,13 +1,15 @@
 var express = require("express");
 var router = express.Router();
 var VacationSpot = require("../models/vacationSpot");
+var Comment = require("../models/comment");
+var middleware = require("../middleware/index.js");
 
 //INDEX ROUTE - shows all vacationSpots that match the search
 router.get("/vacationSpots", function(req, res){
 	//Get all vacationSpots from DB that match the search
 	var search = req.query.search;
 	
-	if(search.planet == undefined){
+	if(search.planet == ""){
 		VacationSpot.find({}, function(err, vacationSpots){
 			if(err){
 				console.log(err);
@@ -37,6 +39,79 @@ router.get("/vacationSpots", function(req, res){
 		}
 	}
 });
+
+// NEW ROUTE - create new VacationSpot
+router.get("/vacationSpots/new", middleware.checkIfAdmin, function(req,res){
+	res.render("vacationSpots/new.ejs");
+});
+
+// CREATE ROUTE - create new VacationSpot
+router.post("/vacationSpots", middleware.checkIfAdmin, function(req,res){
+	
+	VacationSpot.create(req.body.vacationSpot, function(err, vacationSpot){
+		if(err){
+			console.log(err);
+			res.redirect("/");
+		} else {
+			vacationSpot.rating = 0;
+			vacationSpot.save();
+			res.redirect("/vacationSpots/" + vacationSpot._id);
+		}
+	});
+});
+
+// EDIT ROUTE - edit VacationSpot
+router.get("/vacationSpots/:id/edit", middleware.checkIfAdmin, function(req, res){
+	//find vacationSpot with provided ID
+	VacationSpot.findById(req.params.id, function(err, foundVacationSpot){
+		if(err){
+			console.log(err);
+		} else {
+			res.render("vacationSpots/edit.ejs", {vacationSpot: foundVacationSpot});
+		}
+	});
+});
+
+// UPDATE ROUTE - update VacationSpot
+router.put("/vacationSpots/:id", middleware.checkIfAdmin, function(req, res){
+	//update vacationSpot with provided ID
+	VacationSpot.findByIdAndUpdate(req.params.id, req.body.vacationSpot, function(err, foundVacationSpot){
+		if(err){
+			console.log(err);
+			res.redirect("back");
+		} else {
+			res.redirect("/vacationSpots/" + foundVacationSpot._id);
+		}
+	});
+});
+
+//DESTROY ROUTE - delete comment
+router.delete("/vacationSpots/:id", middleware.checkIfAdmin, function(req,res){
+	VacationSpot.findById(req.params.id, function(err, foundVacationSpot){
+		if(err){
+			console.log(err);
+			res.redirect("/");
+		} else {
+			foundVacationSpot.comments.forEach(function(comment){
+				Comment.findByIdAndRemove({_id: comment._id}, function(err){
+					if(err){
+						console.log(err);
+					}
+				}); 
+			});	
+				
+			foundVacationSpot.remove({_id: req.params.id}, function(err){
+				if(err){
+					console.log(err);
+					res.redirect("/");
+				} else {
+					res.redirect("/");
+				}
+			});	
+		}
+	});
+});	
+
 
 //SHOW ROUTE - shows one specific vacationSpot
 router.get("/vacationSpots/:id", function(req, res){

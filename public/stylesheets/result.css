@@ -627,6 +627,12 @@ a{
 	background: linear-gradient(0deg, #244a57, #222f4b);
 }
 
+.container{
+	display: flex;
+	justify-content:center;
+	margin: 10px 0 40px 0;
+}
+
 /*__________________________________________________________________________________ */
 
 /* row and column layout */
@@ -934,8 +940,16 @@ a{
 .show-section__subtitle{
 		font-weight: 500;
 		font-size: 1.1rem;
-		margin: 0
+		margin: 0;
 	}
+
+.show-section__subtitle--mt{
+			margin-top: 30px;
+		}
+
+.show-section__subtitle--mb{
+			margin-bottom: 20px;
+		}
 
 @media(min-width: 900px){
 	
@@ -1240,7 +1254,9 @@ a{
 		padding-top: 35px;
 		width: 100%;
 		background-color: transparent;
-		font-weight: 300
+		font-weight: 300;
+		display: flex;
+		align-items: center
 	}
 
 .review-form__input:focus{
@@ -1266,6 +1282,15 @@ a{
 			outline: none;
 			box-shadow: inset 0 0 0 2px #fb9073;
 		}
+
+.review-form__radio-label{
+		font-size: 0.9rem;
+		margin-right: 10px;
+	}
+
+.review-form__radio{
+		margin-right: 20px;
+	}
 
 /*__________________________________________________________________________________ */
 /* primary navigation */
@@ -1356,7 +1381,7 @@ a{
 
 /* button */
 .btn{
-	padding: 10px 20px;
+	padding: 10px 14px;
   	text-align: center;
   	text-decoration: none;
   	display: inline-block;
@@ -1373,7 +1398,8 @@ a{
 .btn{
 		padding: 10px 20px;
 		font-size: 1.2rem;
-		border-radius: 20px
+		border-radius: 20px;
+		padding: 15px 20px
 }
 	}
 @media(min-width: 1200px){

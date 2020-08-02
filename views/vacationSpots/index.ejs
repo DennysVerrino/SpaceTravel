@@ -5,8 +5,12 @@
 <div class="page-section">
 	<div class="wrapper">
 		<h2 class="page-section__title"><i class="fas fa-circle"></i>Locations on <%= search.planet %></h2>
-		<p class="page-section__subtitle">...</p>
-		
+		<p class="page-section__subtitle">Look a this beautiful spots</p>
+		<% if(currentUser && currentUser._id == "5f17edbda29dfe0e9ff6c9f1"){ %>
+			<div class="container">
+				<a class="btn btn--turquoise" href="/vacationSpots/new">Create New Vacation Spot</a>
+			</div>
+		<% } %>
 		<div class="grid">
 			<% vacationSpots.forEach(function(vacationSpot){ %>
 			<div class="grid__tile--3-col-atL">
@@ -34,6 +38,12 @@
 								<% } %>	
 							<% } %>	
 						</div>
+						<% if(currentUser && currentUser._id == "5f17edbda29dfe0e9ff6c9f1"){ %>
+							<a href="/vacationSpots/<%= vacationSpot._id %>/edit" class="btn btn--turquoise btn--small">Edit</a>
+							<form class="form--inline" action="/vacationSpots/<%= vacationSpot._id %>?_method=DELETE" method="POST">
+								<button class="btn btn--small btn--orange">Delete</button>
+							</form>
+						<% } %>
 					</div>	
 				</div>
 			</div>

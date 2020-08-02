@@ -1,0 +1,145 @@
+<%- include("../partials/header") %>
+<%- include("../partials/nav") %>
+<%- include("../partials/smallBanner") %>
+
+<div class="show-section">
+	<div class="wrapper wrapper--maxWidth-1000">
+		<h3 class="show-section__title">Edit <%= vacationSpot.station %></h3>
+
+		<form class="review-form review-form--with-mt review-form--with-mb" action="/vacationSpots/<%= vacationSpot._id %>?_method=PUT" method="POST">
+			<h4 class="show-section__subtitle show-section__subtitle--mb">General Information</h4>
+			
+			<div class="review-form__inputs-container">
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Planet</label>
+					<input type="text" name="vacationSpot[name]" class="review-form__input" value="<%= vacationSpot.name %>" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Station Name</label>
+					<input type="text" name="vacationSpot[station]" class="review-form__input" value="<%= vacationSpot.station %>" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Type</label>
+					<select class="review-form__input" name="vacationSpot[type]" required>
+							<option value="Apartment">Apartment</option>
+					</select>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Guests</label>
+					<input type="text" name="vacationSpot[guests]" class="review-form__input" pattern="\d*" value="<%= vacationSpot.guests %>" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Bedrooms</label>
+					<input type="text" name="vacationSpot[bedrooms]" class="review-form__input" pattern="\d*" value="<%= vacationSpot.bedrooms %>" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Picture Path</label>
+					<input type="text" name="vacationSpot[thumbnail]" class="review-form__input" value="<%= vacationSpot.thumbnail %>" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Price</label>
+					<input type="text" name="vacationSpot[price]" class="review-form__input" pattern="\d*" value="<%= vacationSpot.price %>" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Description</label>
+					<textarea rows="5" maxlength="100" name="vacationSpot[description]" class="review-form__textarea" required><%= vacationSpot.description %></textarea>
+				</div>
+			</div>
+			
+			<h4 class="show-section__subtitle show-section__subtitle--mt show-section__subtitle--mb">Details</h4>
+			<div class="review-form__inputs-container">
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Check-in</label>
+					<input type="text" name="vacationSpot[details.checkin]" class="review-form__input" value="<%= vacationSpot.details.checkin %>" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Check-Out</label>
+					<input type="text" name="vacationSpot[details.checkout]" class="review-form__input" value="<%= vacationSpot.details.checkout %>" required>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">First Aid Kit</label>
+					<div class="review-form__input">
+						<% if(vacationSpot.details.firstAid == "Yes"){ %>  
+							<label class="review-form__radio-label">Yes</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.firstAid]" checked required value="Yes">
+							<label class="review-form__radio-label">No</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.firstAid]" required value="No">
+						<% } else { %>
+							<label class="review-form__radio-label">Yes</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.firstAid]" required value="Yes">
+							<label class="review-form__radio-label">No</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.firstAid]" checked required value="No">
+						<% } %>
+					</div>	
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Wifi</label>
+					<div class="review-form__input">
+						<% if(vacationSpot.details.wifi == "Yes"){ %>  
+							<label class="review-form__radio-label">Yes</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.wifi]" checked required value="Yes">
+							<label class="review-form__radio-label">No</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.wifi]" required value="No">
+						<% } else { %>
+							<label class="review-form__radio-label">Yes</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.wifi]" required value="Yes">
+							<label class="review-form__radio-label">No</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.wifi]" checked required value="No">
+						<% } %>
+					</div>	
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Bathtub</label>
+					<div class="review-form__input">
+						<% if(vacationSpot.details.bathtub == "Yes"){ %>  
+							<label class="review-form__radio-label">Yes</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.bathtub]" checked required value="Yes">
+							<label class="review-form__radio-label">No</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.bathtub]" required value="No">
+						<% } else { %>
+							<label class="review-form__radio-label">Yes</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.bathtub]" required value="Yes">
+							<label class="review-form__radio-label">No</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.bathtub]" checked required value="No">
+						<% } %>
+					</div>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Air Conditioner</label>
+					<div class="review-form__input">
+						<% if(vacationSpot.details.airCon == "Yes"){ %>  
+							<label class="review-form__radio-label">Yes</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.airCon]" checked required value="Yes">
+							<label class="review-form__radio-label">No</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.airCon]" required value="No">
+						<% } else { %>
+							<label class="review-form__radio-label">Yes</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.airCon]" required value="Yes">
+							<label class="review-form__radio-label">No</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.airCon]" checked required value="No">
+						<% } %>
+					</div>
+				</div>
+				<div class="review-form__input-container">
+					<label class="review-form__input-label">Pets</label>
+					<div class="review-form__input">
+						<% if(vacationSpot.details.pets == "Yes"){ %>  
+							<label class="review-form__radio-label">Allowed</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.pets]" checked required value="Allowed">
+							<label class="review-form__radio-label">Not Allowed</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.pets]" required value="Not Allowed">
+						<% } else { %>
+							<label class="review-form__radio-label">Allowed</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.pets]" required value="Allowed">
+							<label class="review-form__radio-label">Not Allowed</label>
+							<input class="review-form__radio" type="radio" name="vacationSpot[details.pets]" checked required value="Not Allowed">
+						<% } %>
+					</div>	
+				</div>
+			</div>	
+			<button class="btn btn--turquoise btn--full-width">Submit</button>
+		</form>
+	</div>
+</div>
+
+<%- include("../partials/footer") %>

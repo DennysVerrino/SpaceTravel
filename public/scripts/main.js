@@ -2,24 +2,29 @@ import MobileMenu from './modules/MobileMenu.js';
 import StickyHeader from './modules/StickyHeader.js';
 import Button from './modules/Button.js';
 import RevealOnScroll from './modules/RevealOnScroll.js';
+import Preselection from './modules/Preselection.js';
 
 
 document.addEventListener("DOMContentLoaded", function(){
   
-	if(document.querySelector(".site-header")){
+	if(document.querySelector(".site-header").length != 0){
 		let	stickyHeader = new StickyHeader();   
 		let mobileMenu = new MobileMenu();	
 	}
-	if(document.querySelectorAll(".card")){
+	if(document.querySelectorAll(".card").length != 0){
 		new RevealOnScroll(document.querySelectorAll(".card"), 85);	
 	}
-	if(document.querySelectorAll(".feature-item")){
+	if(document.querySelectorAll(".feature-item").length != 0){
 		new RevealOnScroll(document.querySelectorAll(".feature-item"), 60);
 	}
 
-	if(document.querySelectorAll(".show-section")){
+	if(document.querySelectorAll(".show-section").length != 0){
 		new RevealOnScroll(document.querySelectorAll(".show-section"), 60);
 	}
+	
+	// if(document.getElementsByName("vacationSpot[details.firstAid]").length != 0){
+	// 	new Preselection();
+	// }
 
 	let button = new Button();
 });
