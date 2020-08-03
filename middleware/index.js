@@ -33,7 +33,7 @@ middlewareObj.isLoggedIn = function(req, res, next){
 
 middlewareObj.checkIfAdmin = function(req, res, next){
 	if(req.isAuthenticated()){
-		User.findById({_id : "5f17edbda29dfe0e9ff6c9f1"}, function(err, foundAdmin){
+		User.findById({_id : "5f28282255ed3a3348eab4d9"}, function(err, foundAdmin){
 			if(err){
 				console.log(err);
 				res.redirect("back");
