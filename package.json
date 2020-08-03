@@ -28,5 +28,5 @@
     "precss": "^4.0.0",
 	"postcss-hexrgba": "^2.0.1",
     "postcss-mixins": "^6.2.3"
-  },
+  }
 }
