@@ -25,10 +25,8 @@
     "passport-local-mongoose": "^6.0.1",
     "postcss-nested": "^4.2.1",
     "postcss-simple-vars": "^5.0.2",
-    "precss": "^4.0.0"
-  },
-  "devDependencies": {
-    "postcss-hexrgba": "^2.0.1",
+    "precss": "^4.0.0",
+	"postcss-hexrgba": "^2.0.1",
     "postcss-mixins": "^6.2.3"
-  }
+  },
 }
