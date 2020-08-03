@@ -610,7 +610,7 @@ a{
 }
 
 .gradient__with-bg1{
-		background-image: linear-gradient(to top, rgba(36,74,87, 1.0), rgba(33,23,64, 0.8)), url(../images/space_landscape_medium.jpg);
+		background-image: linear-gradient(to top, rgba(36,74,87, 1), rgba(33,23,64, 0.6)), url(../images/space_landscape_medium.jpg);
 		background-size: cover;
 		background-position: center center;
 		background-attachment: fixed;

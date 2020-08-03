@@ -2,7 +2,6 @@ import MobileMenu from './modules/MobileMenu.js';
 import StickyHeader from './modules/StickyHeader.js';
 import Button from './modules/Button.js';
 import RevealOnScroll from './modules/RevealOnScroll.js';
-import Preselection from './modules/Preselection.js';
 
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -21,10 +20,6 @@ document.addEventListener("DOMContentLoaded", function(){
 	if(document.querySelectorAll(".show-section").length != 0){
 		new RevealOnScroll(document.querySelectorAll(".show-section"), 60);
 	}
-	
-	// if(document.getElementsByName("vacationSpot[details.firstAid]").length != 0){
-	// 	new Preselection();
-	// }
 
 	let button = new Button();
 });
